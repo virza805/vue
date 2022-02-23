@@ -3,12 +3,17 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import Class4 from './components/Class4.vue'
+import Gif from './components/Gif.vue'
+
 </script>
 
-<template>
-  <img alt="Vue logo" src="./assets/logo.gif" />
+<template class="text-center">
+  <!-- <img class=" text-center" alt="Vue logo" src="./assets/logo.gif" /> -->
   <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
+  <div>
+  <Gif />
   <Class4 />
+  </div>
   
 </template>
 

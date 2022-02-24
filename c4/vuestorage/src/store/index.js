@@ -1,22 +1,10 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import notes from "./notes";
 
 const store = createStore({
-
-    state() {
-        return {
-            count: 0,
-            appName: "Vuex",
-        };
-    },
-    mutations: {
-        increment(state) {
-            state.count++;
-        },
-        decrement(state) {
-            state.count--;
-        },
+    modules: {
+        notes,
     }
-
 });
 
 

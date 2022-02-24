@@ -5,24 +5,25 @@
       <p>{{ note.desc }}</p>
     </div>
     <p class="time">{{ time }}</p>
-    <div class="buttons"><button @click="remove" class="delete">×</button></div>
+    <div class="buttons"><button @click="remove" class="delete">X</button></div>
   </div>
 </template>
 <script>
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-dayjs.extend(relativeTime);
-export default {
-  props: ["note"],
-  computed: {
-    time() {
-      return dayjs(this.note.created_at).fromNow();
+import relativeTime  from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime)
+  export default {
+    props: ["note"],
+    computed: {
+      time() {
+        return dayjs(this.note.created_at).fromNow();
+      }
     },
-  },
-  methods: {
-    remove() {
-      this.$store.commit("deleteNote", this.note.id);
+    methods: {
+      remove() {
+        this.$store.commit("notes/deleteNote", this.note.id);
+      },
     },
-  },
-};
+    
+  };
 </script>

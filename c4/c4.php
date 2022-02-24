@@ -15,6 +15,10 @@ https://www.facebook.com/groups/vuejsninjasbd
 
 https://github.com/kingRayhan/vuejs-bootcamp
 
+
+GitHub Copilot || v1.7.5118
+GitHub || 972,332
+
 */
 
 
@@ -40,4 +44,12 @@ https://github.com/kingRayhan/vuejs-bootcamp
 # npm i vuex => for use Global State Management || https://pinia.vuejs.org/
 # npm i sass -D =>  Preprocessor dependency "sass" not found. Did you install it?
 # 4}54:00  => 
+# npm i uuid => for a make unique id
+# npm i dayjs => fot time formate style | https://day.js.org/docs/en/display/format
+#  => 
+#  => 
+#  => 
+#  => 
+#  => 
+#  => 
 

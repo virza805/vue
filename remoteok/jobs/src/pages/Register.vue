@@ -63,9 +63,9 @@ import axios from "axios";
 import Input from '@/components/Form/Input.vue';
 import Button from '@/components/Form/Button.vue';
 import useForm from '@/hooks/useForm';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
-const router = useRoute();
+const router = useRouter();
 
 
 const { loading, getErrorMessage, submitForm } = useForm();
@@ -74,17 +74,15 @@ const form = reactive({
     name: "",
     email: "",
     password: "",
-    password_confirmation: ""
+    password_confirmation: "",
 });
 
-
 const handleSubmit = async () => {
-    submitForm(form, "/api/auth/register")
-    .then((res) => {
+    submitForm(form, "/api/auth/register").then((res) => {
         // toaster
         router.push({ name: "auth.login" });
     });
     
 };
 
-</script>
+</script> 

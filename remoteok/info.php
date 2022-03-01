@@ -9,6 +9,9 @@ https://github.com/kingRayhan/vuejs-bootcamp
 ফেসবুক গ্রুপ লিংক
 https://www.facebook.com/groups/vuejsninjasbd
 
+Markup link
+https://gist.github.com/kingRayhan/9480a1dfbfa01c4afbf548ac1ba747aa
+
 ## ++ remoteOk.com ++ ## 
 
 #  => https://jobs-api.return0.codes/ <= # API Documentation || for create scribelaravel api || => https://github.com/knuckleswtf/scribe

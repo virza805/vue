@@ -36,9 +36,12 @@ import Input from '@/components/Form/Input.vue';
 import Button from '@/components/Form/Button.vue';
 import useForm from '@/hooks/useForm';
 import { useRouter } from 'vue-router';
+import api from '@/helpers/api';
+import useAuthStore from '@/store/auth';
 
 const router = useRouter();
 
+const auth = useAuthStore();
 
 const { loading, getErrorMessage, submitForm } = useForm();
   
@@ -47,10 +50,13 @@ const form = reactive({
     password: "",
 });
 
-const handleSubmit = async () => {
-    submitForm(form, "/api/auth/login").then((res) => {
-        // toaster
+const handleSubmit =  () => {
+    submitForm(form, "/api/auth/login").then(async ({token}) => {
+        localStorage.setItem('token', token);
+        api.setHeader("Authorization", `Bearer ${token}`);
+        await auth.boot();
         router.push({ name: "home" });
+        // console.log(response);
     });
     
 };

@@ -7,6 +7,10 @@ export default {
 
 }
 </script>
+<script setup>
+  // import useAuthStore from '@/store/auth';
+
+</script>
 
 <style>
 

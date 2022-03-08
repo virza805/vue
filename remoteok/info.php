@@ -30,7 +30,7 @@ https://gist.github.com/kingRayhan/9480a1dfbfa01c4afbf548ac1ba747aa
 # npm i @tailwindcss/typography @tailwindcss/forms -D => 
 # npm i axios => || <= npm i apisauce | axios er alternative 
 #  => 
-#  => 
+# npm install pinia => https://pinia.vuejs.org/getting-started.html#installation
 #  => 
 #  => 
 #  => 

@@ -20,7 +20,7 @@ const useForm = () => {
             const { ok, data, originalError } = await api[method](endpoint, payload); 
 
             if(ok) {
-                resolve(true);
+                resolve(data);
             }else {
                 errors.value = originalError.response.data.errors;
             }

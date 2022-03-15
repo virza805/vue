@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,31 +22,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function(){
 
-    Route::group(['prefix' => '/user', 'middleware'=>['guest:api'] ], function(){
+    Route::group(['prefix' => '/user', 'middleware'=>['guest:api'], 'namespace' => 'Api' ], function(){
 
-        Route::post('/login',function(){
-            $req_data = request()->only('email', 'password');
-            if(Auth::attempt($req_data)) {
-                $user = Auth::user();
-                $data['access_token'] = $user->createToken('accessToken')->accessToken;
-                $data['user'] = $user;
-                return response()->json($data, 200,);
-            }else{
-                $data['message'] = 'user not exists!!';
-                return response()->json($data, 401);
-            }
-        });
+        Route::post('/login', [AuthController::class, 'login']);
+        Route::post('/register', [AuthController::class, 'register']);
+
 
     });
 
-    Route::group(['prefix' => '/user', 'middleware'=>['auth:api'] ], function(){
+    Route::group(['prefix' => '/user', 'middleware'=>['auth:api'], 'namespace' => 'Api'  ], function(){
+        Route::get('/logout', [AuthController::class, 'logout']);
 
+        Route::get('/test', function() {
+            // return "heyyy this is a very secret router";
+            return ['user'=>'test'];
+        });
     });
 
 });
 
-// Route::get('/test', function() {
-//     // return "heyyy this is a very secret router";
-//     return ['user'=>'test'];
-// });
+Route::get('/test', function() {
+    // return "heyyy this is a very secret router";
+    return ['user'=>'test'];
+});
 // Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');

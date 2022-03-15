@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/login', function(){
+    return response()->json([
+        'auth' => 0,
+        'message' => 'Unauthorized',
+    ], 401);
+})->name('login');
+
+Route::get('/test_data_api', function(){
+    $response = Http::get('https://openlibrary.org/search.json?q=web');
+
+    dd($response->json());
+});

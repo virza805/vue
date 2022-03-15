@@ -1,6 +1,8 @@
 <?php 
 // https://github.com/Md-shefat-masum/vue_library_frontend
 
+// https://github.com/Md-shefat-masum/library_management_api
+
 /* #vue ui 1-8> frontend || 9-34> backend
 
 =========== >>>> = Frontend (npm run serve) = <<<<============
@@ -48,11 +50,16 @@ npm run build
 #  =>
 # php artisan make:controller Api/AuthController => 
 
-
-
+php artisan make:model UserRole -a => for new table in database
+php artisan make:model BookList -a => for new table in database
+php artisan make:model BookEntry -a => for new table in database
 
 # php artisan migrate => 
-# php artisan make:controller AuthController =>
+
+# 20:41s => https://www.youtube.com/watch?v=NLdGUQlzFYE&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=13
+
+https://openlibrary.org/search.json?q=web => libary api
+
 # php artisan make:request RegisterRequest =>
 
 
@@ -64,7 +71,7 @@ npm run build
 
 
 
-
+<span style="color: #caa659;">:</span>
 
 
 

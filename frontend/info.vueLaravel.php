@@ -60,6 +60,27 @@ php artisan make:model BookEntry -a => for new table in database
 
 https://openlibrary.org/search.json?q=web => libary api
 
+php artisan db:seed =>
+
+# php artisan migrate:fresh --seed => 
+
+
+
+=========== >>>> == (npm run serve) Frontend <--TO--> Backend (php artisan serve) == <<<<============
+
+
+
+https://www.youtube.com/watch?v=58w-HUwiG9U&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=14
+
+# npm i axios => for http request 
+# npm i jquery => jquery
+# npm i vuex-persistedstate => vuex-persistedstate localStore save kora-> https://www.npmjs.com/package/vuex-persistedstate
+
+
+
+
+
+
 # php artisan make:request RegisterRequest =>
 
 
@@ -71,7 +92,7 @@ https://openlibrary.org/search.json?q=web => libary api
 
 
 
-<span style="color: #caa659;">:</span>
+// <!-- <span style="color: #caa659;">:</span> -->
 
 
 

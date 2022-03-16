@@ -20,14 +20,16 @@ class BookListSeeder extends Seeder
     $response = Http::get('https://openlibrary.org/search.json?q=web');
     $sections = ['A','B','C','D','E'];
 
-    foreach ($response->json()->docs as $book) {
-        BookList::insert([
-            'name' => $book->title,
-            'image' => 'https://covers.openlibrary.org/b/id/'.$book->cover_i.'-M.jpg',
-            'section' => $sections[rand(0,4)],
-            'published_date' => $book->first_publish_year,
-        ]);
-    }
+    $books = $response->json()['docs'];
+        foreach ($books as $book) {
+            $book = (object) $book;
+            BookList::insert([
+                'name' => $book->title,
+                'image' => 'covers.openlibrary.org/b/id/'.(isset($book->cover_i)?$book->cover_i:'8311467').'-M.jpg',
+                'section' => $sections[rand(0,4)],
+                'published_data' => (isset($book->first_publish_year)?$book->first_publish_year:'1995'),
+            ]);
+        }
 
     }
 }

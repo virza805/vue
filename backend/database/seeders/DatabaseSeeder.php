@@ -23,17 +23,39 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        // UserRole::truncate();
-        // BookList::truncate();
-        // BookEntry::truncate();
-        UserRoleSeeder::truncate();
-        BookListSeeder::truncate();
-        BookEntrySeeder::truncate();
+        UserRole::truncate();
+        BookList::truncate();
+        BookEntry::truncate();
 
         $this->call([
             UserRoleSeeder::class,
             BookListSeeder::class,
             BookEntrySeeder::class,
+        ]);
+
+        User::insert([
+            'name' => 'super_admin',
+            'email' => 'super_admin@gmail.com',
+            'role_serial' => 1,
+            'password' => Hash::make('12345678'),
+        ]);
+        User::insert([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'role_serial' => 2,
+            'password' => Hash::make('12345678'),
+        ]);
+        User::insert([
+            'name' => 'management',
+            'email' => 'management@gmail.com',
+            'role_serial' => 3,
+            'password' => Hash::make('12345678'),
+        ]);
+        User::insert([
+            'name' => 'student',
+            'email' => 'student@gmail.com',
+            'role_serial' => 4,
+            'password' => Hash::make('12345678'),
         ]);
     }
 }

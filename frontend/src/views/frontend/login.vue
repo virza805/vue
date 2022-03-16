@@ -13,7 +13,7 @@
           type="text"
           name="email"
           class="form-control"
-          placeholder="John Deo"
+          placeholder="tanvir@gmail.com"
         />
       </div>
       <div class="form-group">

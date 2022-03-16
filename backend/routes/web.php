@@ -32,5 +32,5 @@ Route::get('/login', function(){
 Route::get('/test_data_api', function(){
     $response = Http::get('https://openlibrary.org/search.json?q=web');
 
-    dd($response->json());
+    dd($response->json()['docs']);
 });

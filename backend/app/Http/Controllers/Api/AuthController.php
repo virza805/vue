@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function login(Request $request) {
         $req_data = request()->only('email', 'password');
             if(Auth::attempt($req_data)) {
-                $user = Auth::user();
+                $user = User::where('id',Auth::user()->id)->with('user_role')->first();
                 $data['access_token'] = $user->createToken('accessToken')->accessToken;
                 $data['user'] = $user;
                 return response()->json($data, 200,);

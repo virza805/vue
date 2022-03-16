@@ -26,8 +26,6 @@ Route::group(['prefix' => 'v1'], function(){
 
         Route::post('/login', [AuthController::class, 'login']);
         Route::post('/register', [AuthController::class, 'register']);
-
-
     });
 
     Route::group(['prefix' => '/user', 'middleware'=>['auth:api'], 'namespace' => 'Api'  ], function(){
@@ -41,7 +39,10 @@ Route::group(['prefix' => 'v1'], function(){
 
 });
 
-Route::get('/test', function() {
+Route::post('/test-data', function() {
+    return request()->all();
+});
+Route::get('/test-data', function() {
     // return "heyyy this is a very secret router";
     return ['user'=>'test'];
 });

@@ -70,13 +70,16 @@ php artisan db:seed =>
 
 
 
-https://www.youtube.com/watch?v=58w-HUwiG9U&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=14
+15:34 => https://www.youtube.com/watch?v=58w-HUwiG9U&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=14
 
 # npm i axios => for http request 
 # npm i jquery => jquery
 # npm i vuex-persistedstate => vuex-persistedstate localStore save kora-> https://www.npmjs.com/package/vuex-persistedstate
 
-
+# php artisan passport:keys => if download github file then run this
+# php artisan passport:client --personal => if some error show like this {
+    “RuntimeException: Personal access client not found. Please create one. in file D:\Wynch\vendor\laravel\passport\src\ClientRepository.php on line 122”
+}
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2022 at 06:05 AM
+-- Generation Time: Mar 16, 2022 at 12:22 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -241,6 +241,17 @@ CREATE TABLE `oauth_access_tokens` (
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `oauth_access_tokens`
+--
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('0a7fe6dba7fb2a3fa936906f8660817dc7a88e9e2b73c832efef58dd60d72c6b6556fe7017c97633', 1, 1, 'accessToken', '[]', 0, '2022-03-16 05:12:29', '2022-03-16 05:12:29', '2023-03-16 11:12:29'),
+('46372409cf0cafd488af6785b7483f15bff0bd3caa340052717789ddf3221b25da3fd66e5059e947', 1, 1, 'accessToken', '[]', 0, '2022-03-16 05:12:29', '2022-03-16 05:12:29', '2023-03-16 11:12:29'),
+('757cbfd2c3dae7496253301ff2c21220d555a32c2fa39d97debab888e9517579e230cc643b2b5e9a', 1, 1, 'accessToken', '[]', 0, '2022-03-16 05:12:28', '2022-03-16 05:12:28', '2023-03-16 11:12:28'),
+('bea5c372e5aea13b2d5bca869cdcad22ccaa2953befd995766d130cb57862474a291f020c6659e69', 1, 1, 'accessToken', '[]', 0, '2022-03-16 00:20:29', '2022-03-16 00:20:29', '2023-03-16 06:20:29'),
+('d1482652f115a42f29a44af61ecc53808243b41bf8f76300fbfd07a0d80fed12eed9323fdcb3c4c5', 1, 1, 'accessToken', '[]', 0, '2022-03-16 00:23:45', '2022-03-16 00:23:45', '2023-03-16 06:23:45');
+
 -- --------------------------------------------------------
 
 --
@@ -276,6 +287,13 @@ CREATE TABLE `oauth_clients` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `oauth_clients`
+--
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `provider`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Laravel Personal Access Client', 'sdoOGnx6WcqkMiZaXSuNch3srQE40OPi1AwbbOGO', NULL, 'http://localhost', 1, 0, 0, '2022-03-16 00:18:54', '2022-03-16 00:18:54');
+
 -- --------------------------------------------------------
 
 --
@@ -288,6 +306,13 @@ CREATE TABLE `oauth_personal_access_clients` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2022-03-16 00:18:54', '2022-03-16 00:18:54');
 
 -- --------------------------------------------------------
 
@@ -355,7 +380,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `role_serial`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'super_admin', '1', 'super_admin@gmail.com', NULL, '$2y$10$JNZiEZIn74jeFY3j6gGX7ODF28WkJteuHJ46X8llguygBg7UhTSf.', NULL, NULL, NULL),
+(1, 'super_admin', '1', 'superadmin@gmail.com', NULL, '$2y$10$JNZiEZIn74jeFY3j6gGX7ODF28WkJteuHJ46X8llguygBg7UhTSf.', NULL, NULL, NULL),
 (2, 'admin', '2', 'admin@gmail.com', NULL, '$2y$10$nBPyA/OuYOxJ/YdQDgwGjOgNmpNFz4jKHeUworA/MOPkHKddFAZU6', NULL, NULL, NULL),
 (3, 'management', '3', 'management@gmail.com', NULL, '$2y$10$kh6ZPzkd0sHfeOA2q3HipeZnSSYLvD7xo553D7zmAg3V4pePfUmku', NULL, NULL, NULL),
 (4, 'student', '4', 'student@gmail.com', NULL, '$2y$10$dKdJvkjJNEDOD8jv02HQMu88vjIo11HNUQnAelmGYkd9o5mMlnMTK', NULL, NULL, NULL);
@@ -509,13 +534,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

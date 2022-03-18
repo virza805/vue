@@ -16,6 +16,7 @@ const state = {
     },
     auth_role_name: 'guest',
     auth_token: '',
+    server_url: 'http://127.0.0.1:8000',
 }
 
 // getters
@@ -24,6 +25,8 @@ const getters = {
     get_auth_info: state => state.auth_info,
     get_auth_role_name: state => state.auth_role_name,
     get_auth_token: state => state.auth_token,
+    get_server_url: state => state.server_url,
+    get_profile_image_url: state => state.server_url+'/'+state.auth_info.image,
 }
 
 // action
@@ -48,6 +51,7 @@ const mutations = {
         state.auth_info.username = auth_info.name;
         state.auth_info.email = auth_info.email;
         state.auth_info.role_name = auth_info.user_role.name;
+        state.auth_info.image = auth_info.image;
 
         this.commit('set_auth_role_name', auth_info.user_role.name);
         this.commit('set_check_auth_status', true);

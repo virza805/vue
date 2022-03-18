@@ -64,8 +64,8 @@
           <br />
           <div class="text-left mt-2 m-l-20">
             Forget Password??
-            <router-link :to="{ name: 'signup' }">Click here</router-link>
-            <!-- <router-link :to="{ name: 'forget' }">Click here</router-link> -->
+            <!-- <router-link :to="{ name: 'signup' }">Click here</router-link> -->
+            <router-link :to="{ name: 'forget' }">Click here</router-link>
           </div>
         </div>
       </div>
@@ -78,10 +78,10 @@
 import { mapMutations } from "vuex";
 export default {
   created: function () {
-    window.axios.post('/user/test-data')
-        .then(res=>{
-            console.log(res)
-        })
+    // window.axios.post('/user/test-data')
+    //     .then(res=>{
+    //         console.log(res)
+    //     })
   },
 
   methods: {
@@ -100,8 +100,8 @@ export default {
       window.axios.post("/user/login", form_data).then((res) => {
         this.set_auth_token({ token: res.data.access_token });
         this.set_auth_info(res.data.user);
-        localStorage.setItem('b_token', res.data.user.access_token);
-          console.log(res.data);
+        // localStorage.setItem('b_token', res.data.user.access_token);
+          // console.log(res.data);
       })
       .catch(err=>{
           console.log(err.response);
@@ -111,4 +111,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+form#login_form {
+    text-align: left;
+}
+</style>

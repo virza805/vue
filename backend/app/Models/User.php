@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function user_role() {
         return $this->belongsTo(UserRole::class, 'role_serial', 'role_serial');
     }
+
+    // public function accessToken() {
+    //     return $this->hasMany('App\Models\OauthAccessToken');
+    // }
 }

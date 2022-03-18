@@ -11,6 +11,8 @@
     "axios": "^0.26.1",
     "core-js": "^3.6.5",
     "jquery": "^3.6.0",
+    "laravel-vue-pagination": "^3.0.0",
+    "v-pagination-3": "^0.1.7",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",

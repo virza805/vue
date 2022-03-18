@@ -11,12 +11,25 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Expr\New_;
 
 // use Illuminate\Auth\Events\Validated;
 
 class AuthController extends Controller
 {
     public function login(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required', 'email', 'exists:users'],
+            'password' => ['required', 'min:8'],
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'data' => $validator->errors(),
+            ], 422);
+        } else {
+
         $req_data = request()->only('email', 'password');
             if(Auth::attempt($req_data)) {
                 $user = User::where('id',Auth::user()->id)->with('user_role')->first();
@@ -25,8 +38,12 @@ class AuthController extends Controller
                 return response()->json($data, 200,);
             }else{
                 $data['message'] = 'user not exists!!';
+                $data['data']['email'] = ['email or password incorrect'];
+                $data['data']['password'] = ['email or password incorrect'];
+
                 return response()->json($data, 401);
             }
+        }
     }
 
     public function register(Request $request) {
@@ -44,10 +61,12 @@ class AuthController extends Controller
             ], 422);
         }else{
             $data = $request->only(['name', 'email', 'password']);
+            $data['role_serial'] = 4;
             $data['password'] = Hash::make($request->password);
             $user = User::create($data);
 
             Auth::login($user);
+            $user = User::where('id',Auth::user()->id)->with('user_role')->first();
             $data['access_token'] = $user->createToken('accessToken')->accessToken;
             $data['user'] = $user;
             return response()->json($data, 200,);
@@ -61,4 +80,81 @@ class AuthController extends Controller
             'message' => 'logout',
         ], 200);
     }
+
+    public function update_profile(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'min:4'],
+            'password' => ['required', 'min:8', 'confirmed'],
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'data' => $validator->errors(),
+            ], 422);
+        }
+        $data = $request->only(['name', 'password']);
+        $data['role_serial'] = 4;
+        $data['password'] = Hash::make($request->password);
+        $user = User::find(Auth::user()->id)->fill($data)->save();
+
+        $data['user'] = User::where('id', Auth::user()->id)->with('user_role')->first();
+        return response()->json($data, 200);
+
+    }
+
+    public function update_profile_pic(Request $request)
+    {
+        if($request->hasFile('image')){
+            $path = Storage::put('uploads', $request->file('image'));
+            $user = User::find(Auth::user()->id);
+            $user->image = $path;
+            $user->save();
+            $data['user'] = User::where('id', Auth::user()->id)->with('user_role')->first();
+            return response()->json($data, 200);
+        }
+    }
+
+
+    public function forget(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required','exists:users'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'data' => $validator->errors(),
+            ], 422);
+        }
+        $user = User::where('email',$request->email)->first();
+        $user->forget_token = Hash::make(uniqid(50));
+        $user->save();
+        // hello@example.com | b4b806696d02e8
+        return Mail::to('hello@example.com')->send(new ForgetPassword($user->forget_token));
+    }
+
+    public function forget_token(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'forget_token' => ['required','exists:users'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'data' => $validator->errors(),
+            ], 422);
+        }
+
+        $temp_pass = Hash::make(uniqid(10));
+        $user = User::where('forget_token',$request->forget_token)->first();
+        $user->forget_token = null;
+        $user->password = Hash::make($temp_pass);
+        $user->save();
+
+        return Mail::to('hello@example.com')->send(new ForgetPassword(" your password is:  ".$temp_pass));
+    }
+
 }

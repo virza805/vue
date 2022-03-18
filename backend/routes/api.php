@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\BookListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -26,24 +27,32 @@ Route::group(['prefix' => 'v1'], function(){
 
         Route::post('/login', [AuthController::class, 'login']);
         Route::post('/register', [AuthController::class, 'register']);
+        Route::post('/forget-password', [AuthController::class, 'forget']);
+        Route::post('/forget-token', [AuthController::class, 'forget_token']);
     });
 
     Route::group(['prefix' => '/user', 'middleware'=>['auth:api'], 'namespace' => 'Api'  ], function(){
         Route::get('/logout', [AuthController::class, 'logout']);
+        Route::post('/update-profile', [AuthController::class, 'update_profile']);
+        Route::post('/update-profile-pic', [AuthController::class, 'update_profile_pic']);
 
-        Route::get('/test', function() {
-            // return "heyyy this is a very secret router";
-            return ['user'=>'test'];
-        });
+
+    });
+
+    Route::group(['prefix' => '/book-list', 'middleware'=>['auth:api'] ], function(){
+
+        Route::get('/', [BookListController::class, 'book_list']);
+        Route::post('/store', [BookListController::class, 'store']);
+
     });
 
 });
 
-Route::post('/test-data', function() {
-    return request()->all();
-});
-Route::get('/test-data', function() {
-    // return "heyyy this is a very secret router";
-    return ['user'=>'test'];
-});
+// Route::post('/test-data', function() {
+//     return request()->all();
+// });
+// Route::get('/test-data', function() {
+//     // return "heyyy this is a very secret router";
+//     return ['user'=>'test'];
+// });
 // Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');

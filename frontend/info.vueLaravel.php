@@ -83,25 +83,28 @@ php artisan db:seed =>
 
 start => https://www.youtube.com/watch?v=3YllBlpT19s&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=15
 
+Create a Mail server |> edit .env file|| >>> vir-za.com = https://mailtrap.io/inboxes/1649732/messages {
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=b4b806696d02e8
+MAIL_PASSWORD=c34b40710bb09c
+MAIL_ENCRYPTION=tls
+}
+# php artisan make:mail ForgetPassword => for create Mail 
+
+
+
+# npm install laravel-vue-pagination => https://github.com/gilbitron/laravel-vue-pagination
+# npm i v-pagination-3 => https://www.npmjs.com/package/v-pagination-3
+
+https://www.youtube.com/watch?v=PnkL6lxDFAU&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=20
+
 
 # php artisan make:request RegisterRequest =>
-
-
-
 
 */
 
 
-
-
-
 // <!-- <span style="color: #caa659;">:</span> -->
 
-
-
-
-
-
-
-
-; ?>

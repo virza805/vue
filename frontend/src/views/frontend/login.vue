@@ -100,6 +100,7 @@ export default {
       window.axios.post("/user/login", form_data).then((res) => {
         this.set_auth_token({ token: res.data.access_token });
         this.set_auth_info(res.data.user);
+        localStorage.setItem('b_token', res.data.user.access_token);
           console.log(res.data);
       })
       .catch(err=>{

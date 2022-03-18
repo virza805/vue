@@ -20,9 +20,10 @@ const state = {
 
 // getters
 const getters = {
-    get_check_auth_status: state => state.check_auth_status, 
-    get_auth_info: state => state.auth_info, 
-    get_auth_role_name: state => state.auth_role_name, 
+    get_check_auth_status: state => state.check_auth_status,
+    get_auth_info: state => state.auth_info,
+    get_auth_role_name: state => state.auth_role_name,
+    get_auth_token: state => state.auth_token,
 }
 
 // action
@@ -46,20 +47,34 @@ const mutations = {
     set_auth_info: function(state, auth_info) {
         state.auth_info.username = auth_info.name;
         state.auth_info.email = auth_info.email;
-        state.auth_info.role_name = auth_info.user_role_name;
+        state.auth_info.role_name = auth_info.user_role.name;
 
-        this.commit('set_auth_role_name', auth_info.user_role_name);
-        this.commit('set_auth_role_status', true);
+        this.commit('set_auth_role_name', auth_info.user_role.name);
+        this.commit('set_check_auth_status', true);
     },
-    set_logout: function(state){
+    set_logout: function(state) {
         state.check_auth_status = false;
         state.auth_role_name = 'guest';
-    }
+        state.auth_info = {
+            first_name: null,
+            last_name: null,
+            email: null,
+            username: null,
+            image: null,
+            phone: null,
+            address: null,
+            status: null,
+            role_name: 'guest',
+        };
+    },
+    set_auth_token: function(state, info) {
+        state.auth_token = info.token;
+    },
 }
 
 
-export default{
-    state, 
+export default {
+    state,
     getters,
     actions,
     mutations

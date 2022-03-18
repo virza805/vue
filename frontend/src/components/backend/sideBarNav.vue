@@ -186,9 +186,9 @@ export default {
   methods: {
     ...mapMutations(["set_logout"]),
     get_logout: function () {
-      // window.axios.get("/user/logout").then((res) => {
-      //   console.log(res.data);
-      // });
+      window.axios.get("/user/logout").then((res) => {
+        console.log(res.data);
+      });
       this.$router.replace({ name: "login" });
       this.set_logout();
     },

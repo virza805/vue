@@ -70,7 +70,7 @@ php artisan db:seed =>
 
 
 
-15:34 => https://www.youtube.com/watch?v=58w-HUwiG9U&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=14
+27:20 => https://www.youtube.com/watch?v=58w-HUwiG9U&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=14
 
 # npm i axios => for http request 
 # npm i jquery => jquery
@@ -81,7 +81,7 @@ php artisan db:seed =>
     “RuntimeException: Personal access client not found. Please create one. in file D:\Wynch\vendor\laravel\passport\src\ClientRepository.php on line 122”
 }
 
-
+start => https://www.youtube.com/watch?v=3YllBlpT19s&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=15
 
 
 # php artisan make:request RegisterRequest =>

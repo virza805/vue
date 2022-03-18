@@ -40,10 +40,26 @@ export default {
     console.log(this.get_auth_role_name);
     this.chech_auth_role();
   },
+  watch: {
+    get_check_auth_status: {
+      handler: function(){
+        console.log('changed status');
+        this.chech_auth_role();
+
+        if(this.get_check_auth_status == true){
+          window.axios.defaults.headers.common['Authorization'] = `Bearer ${this.get_auth_token}`; 
+        }else{
+          this.set_auth_token({token: null});
+          delete window.axios.defaults.headers.common.Authorization;
+        }
+      }
+    }
+  },
   methods: {
     // ...mapActions(['']),
     ...mapMutations([
       'set_logout',
+      'set_auth_token',
     ]),
     chech_auth_role:function(){
       
@@ -68,6 +84,7 @@ export default {
     ...mapGetters([
       'get_check_auth_status',
       'get_auth_role_name',
+      'get_auth_token',
     ])
   }
 };

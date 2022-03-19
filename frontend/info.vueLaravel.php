@@ -80,9 +80,9 @@ php artisan db:seed =>
 # php artisan passport:client --personal => if some error show like this {
     “RuntimeException: Personal access client not found. Please create one. in file D:\Wynch\vendor\laravel\passport\src\ClientRepository.php on line 122”
 }
-
+===========================================================================
 start => https://www.youtube.com/watch?v=3YllBlpT19s&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=15
-
+============================================================================
 Create a Mail server |> edit .env file|| >>> vir-za.com = https://mailtrap.io/inboxes/1649732/messages {
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.mailtrap.io
@@ -100,7 +100,7 @@ MAIL_ENCRYPTION=tls
 
 https://www.youtube.com/watch?v=PnkL6lxDFAU&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=20
 
-
+https://www.youtube.com/watch?v=aEuTcSztTJI&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=26
 # php artisan make:request RegisterRequest =>
 
 */

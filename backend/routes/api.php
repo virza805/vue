@@ -43,6 +43,10 @@ Route::group(['prefix' => 'v1'], function(){
 
         Route::get('/', [BookListController::class, 'book_list']);
         Route::post('/store', [BookListController::class, 'store']);
+        Route::post('/update', [BookListController::class, 'update']);
+        Route::get('/get/{id}', [BookListController::class, 'get']);
+        Route::post('/delete', [BookListController::class, 'delete']);
+        Route::post('/delete-multi', [BookListController::class, 'delete_multi']);
 
     });
 

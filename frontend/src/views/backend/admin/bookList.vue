@@ -4,12 +4,31 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h4>Book List</h4>
+            <div class="d-flex justify-content-between flex-wrap">
+                
+              <h4>Book List</h4>
+
+              <input
+                type="text"
+                class="form-control w-50"
+                @keyup="search($event.target.value)"
+                placeholder="search.."
+              />
+
+              <button 
+              v-if="selected_data.length > 0"
+              @click.prevent="delete_multiple()"  
+              class="btn btn-success">Delete Selected ( {{ selected_data.length }} )</button>
+
+            </div>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-bordered table-striped text-center align-middle">
               <thead>
                 <tr>
+                  <th>
+                    <input type="checkbox" @change.prevent="check_all()" id="check_all" class="form-check" >
+                  </th>
                   <th>#</th>
                   <th>Image</th>
                   <th>Book Name</th>
@@ -19,9 +38,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="book in book_list.data" :key="book.id">
+                <tr v-for="(book, index) in book_list.data" :key="book.id">
+
+                  <!-- click | focus | change -->
+                  <td>
+                    <input v-if="selected_data.includes(book.id)" checked type="checkbox" @change="add_to_selected(book.id)" class="form-check" >
+                    <input v-else type="checkbox" @change="add_to_selected(book.id)" class="form-check" >
+                  </td>
+
                   <td>{{ book.id }}</td>
-                  
                   <td>
                     <img
                       v-if="book.image.split('/')[0] === 'upload'"
@@ -44,8 +69,8 @@
                       <a href="#" class="btn btn-sm btn-primary mx-1"
                         >New Entry</a
                       >
-                      <a href="#" class="btn btn-sm btn-warning mx-1">Edit</a>
-                      <a href="#" class="btn btn-sm btn-danger mx-1">Delete</a>
+                      <router-link :to="{name: 'bookEdit', params:{id: book.id}}" class="btn btn-sm btn-warning mx-1">Edit</router-link>
+                      <p @click.prevent="delete_book(book,index)" class="btn btn-sm btn-danger mx-1">Delete</p>
                     </div>
                   </td>
                 </tr>
@@ -76,7 +101,10 @@ export default {
       total: 0,
       pagination_option: {
         edgeNavigation: true,
-      }
+      },
+      search_key: '',
+
+      selected_data: [],
     }
   },
   created: function () {
@@ -84,17 +112,75 @@ export default {
   },
   methods: {
     getData: function (page=1) {
-      window.axios.get("/book-list?page="+page).then((res) => {
+      let url = `/book-list?page= ${page}`;
+      if(this.search_key.length > 0) {
+        url += `&key=${this.search_key}`;
+      }
+      window.axios.get(url).then((res) => {
         console.log(res.data);
         this.book_list = res.data;
         this.total = res.data.total;
         this.per_page = res.data.per_page;
       });
     },
+    delete_book: function(book,index) {
+      let con = confirm('Sure want to delete??');
+      console.log(index);
+      if(con){
+        window.axios.post('/book-list/delete', {id: book.id})
+        .then(res=>{
+          console.log(res.data);
+          // this.book_list.data.splice(index,1); 
+          this.getData(); // for show only 10 data
+        })
+      }
+    },
+    add_to_selected: function(id) {
+      this.selected_data.includes(id) 
+      ?
+       this.selected_data = this.selected_data.filter(item=>item!=id) 
+      : 
+      this.selected_data.push(id);
+      console.log(this.selected_data);
+    },
+    check_all: function(){
+      this.book_list.data.map(item=>{
+
+        this.selected_data.includes(item.id) 
+        ?
+        this.selected_data = this.selected_data.filter(item2=>item2!=item.id) 
+        : 
+        this.selected_data.push(item.id);
+        
+        return 0;
+        // return this.selected_data.push(item.id);
+      })
+    },
+    delete_multiple: function(){
+      let con = confirm('Sure want to delete??');
+      // console.log(index);
+      if(con){
+        window.axios.post('/book-list/delete-multi', { ids: this.selected_data })
+        .then((res)=>{
+          console.log(res.data);
+          this.selected_data = [];
+          // this.book_list.data.splice(index,1); 
+          this.getData(); // for show only 10 data
+          window.$('#check_all').prop('checked',false);
+        })
+      }
+
+    },
+    search: function(key){
+      console.log(key);
+      this.search_key = key;
+      this.getData();
+    },
+
   },
   
   computed: {
-    ...mapGetters(["server_url"]),
+    ...mapGetters(["get_server_url"]),
   },
 };
 </script>

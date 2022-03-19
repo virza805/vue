@@ -44,43 +44,43 @@
 import { mapGetters } from "vuex";
 export default {
   name: "new-entry",
-  // data: function () {
-  //   return {
-  //     id: 0,
-  //     url: "/book-list/store",
-  //   };
-  // },
-  // created: function () {
-  //   console.log(this.$route.params.id);
-  //   this.id = parseInt(this.$route.params.id);
-  //   if (this.id > 0) {
-  //     this.get_book();
-  //     this.url = "/book-list/update";
-  //   }
-  // },
+  data: function () {
+    return {
+      id: 0,
+      url: "/book-list/store",
+    };
+  },
+  created: function () {
+    console.log(this.$route.params.id);
+    this.id = parseInt(this.$route.params.id);
+    if (this.id > 0) {
+      this.get_book();
+      this.url = "/book-list/update";
+    }
+  },
   methods: {
-    // get_book: function () {
-    //   window.axios.get("/book-list/get/" + this.id).then((res) => {
-    //     console.log(res.data);
-    //     for (const key in res.data) {
-    //       if (Object.hasOwnProperty.call(res.data, key)) {
-    //         const element = res.data[key];
-    //         if (key != "image") {
-    //           window.$(`input[name="${key}"`).val(element);
-    //         }
-    //       }
-    //     }
-    //   });
-    // },
+    get_book: function () {
+      window.axios.get("/book-list/get/" + this.id).then((res) => {
+        console.log(res.data);
+        for (const key in res.data) {
+          if (Object.hasOwnProperty.call(res.data, key)) {
+            const element = res.data[key];
+            if (key != "image") {
+              window.$(`input[name="${key}"`).val(element);
+            }
+          }
+        }
+      });
+    },
     save_book: function () {
       let form_data = new FormData(document.getElementById("book_form"));
-      // if (this.url === "/book-list/update") {
-      //   form_data.append("id", this.id);
-      // }
-      window.axios.post('/book-list/store', form_data)
+      if (this.url === "/book-list/update") {
+        form_data.append("id", this.id);
+      }
+      window.axios.post(this.url, form_data)
         .then(res=>{
           console.log(res.data);
-          // this.$router.push({ name: "bookList" });
+          this.$router.push({ name: "bookList" }); // go to BookList page
         })
         .catch(err=>{
           console.log(err.response);

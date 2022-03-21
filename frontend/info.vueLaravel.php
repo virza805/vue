@@ -108,8 +108,11 @@ for lodear /public/js/pace.js => https://codebyzach.github.io/pace/
 
 # npm install vue3-select2-component --save  => https://npm.io/package/vue3-select2-component
 
+
+20:20s || 35:05s => https://www.youtube.com/watch?v=f5wD5Z0eCrY&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=31
 */
 
+# npm run build => for production | before setup main.js & auth_store.js(line_no: 19) live api host url
 
 // <!-- <span style="color: #caa659;">:</span> -->
 

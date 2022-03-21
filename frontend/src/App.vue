@@ -68,7 +68,8 @@ export default {
           this.$router.replace({ name: 'login'});
         }
       }else{
-        this.$router.replace({ name: 'login'});
+        // this.$router.replace({ name: 'login'});
+        this.$router.replace({ name: 'homePage'});
       }
     // console.log(this.get_check_auth_status);
     },

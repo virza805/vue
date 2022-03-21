@@ -30,7 +30,10 @@ import login from "../views/frontend/login.vue";
 import signup from "../views/frontend/signup.vue";
 import forget from "../views/frontend/forget";
 
+import homepageLayout from "../views/frontend/homepageLayout.vue";
 import portfolio from "../views/frontend/portfolio.vue";
+import homePage from "../views/frontend/homePage.vue";
+import about from "../views/frontend/about.vue";
 
 const routes = [{
         path: "/dashboard",
@@ -159,6 +162,22 @@ const routes = [{
             },
         ],
     },
+    {
+        path: "/frontend",
+        component: homepageLayout,
+        children: [
+            {
+                path: "",
+                name: "homePage",
+                component: homePage,
+            },
+            {
+                path: "about",
+                name: "about",
+                component: about,
+            },
+        ],
+    },
     // {
     //   path: "/login",
     //   name: "login",
@@ -175,7 +194,7 @@ const routes = [{
     //   component: signup,
     // },
     {
-        path: "/portfolio",
+        path: "/frontend/portfolio",
         name: "portfolio",
         component: portfolio,
     },

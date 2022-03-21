@@ -27,7 +27,7 @@
       </div>
 
     
-      <div class="form-group jd-none">
+      <div class="form-group d-none">
         <button
           type="button"
           class="btn btn-success m-1"

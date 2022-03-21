@@ -157,4 +157,11 @@ class AuthController extends Controller
         return Mail::to('hello@example.com')->send(new ForgetPassword(" your password is:  ".$temp_pass));
     }
 
+    // for selector import
+    public function user_list_for_select2()
+    {
+        $user = User::where('role_serial', 4)->select('id', 'name')->orderBy('name', 'ASC')->get();
+        return response()->json($user, 200);
+    }
+
 }

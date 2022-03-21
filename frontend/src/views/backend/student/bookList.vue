@@ -65,15 +65,13 @@
 									<td>{{ entry.return_date }}</td>
 									<td>
 										<div class="d-flex justify-content-end">
-											<a href="#" v-if="entry.book_return"  class="btn btn-sm btn-success mx-1">Returned</a>
-											<a href="#" @click.prevent="return_book(entry)" v-else class="btn btn-sm btn-danger mx-1">Return</a>
+                      <a href="#" v-if="entry.book_return" class="btn btn-sm btn-success mx-1">Returned</a>
+                      <a href="#" @click.prevent="return_book(entry)" v-else
+                        class="btn btn-sm btn-danger mx-1">Return</a>
 
-                                            <router-link
-                                                :to="{ name: 'studentEntryDetails', params: { id: entry.id } }"
-                                                class="btn btn-sm btn-primary mx-1"
-                                                >Show Details</router-link
-                                            >
-										</div>
+                      <router-link :to="{ name: 'studentEntryDetails', params: { id: entry.id } }"
+                        class="btn btn-sm btn-primary mx-1">Show Details</router-link>
+                    </div>
 									</td>
 								</tr>
 							</tbody>
@@ -122,15 +120,12 @@
 					this.per_page = res.data.per_page;
 				});
 			},
-            return_book: function(entry){
-                // console.log(entry);
-                let con = confirm('sure');
-                con &&
-                window.axios.post(`/book-entry/return-book`,{id:entry.id}).then((res) => {
+      return_book: function(entry){
+        window.axios.post(`/book-entry/return-book`, {id:entry.id}).then((res) => {
 					console.log(res.data);
-                    entry.book_return = 1;
+          entry.book_return = 1;
 				});
-            }
+      }
 		},
 		computed: {
 			...mapGetters(["get_server_url"]),

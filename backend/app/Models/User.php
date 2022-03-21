@@ -24,6 +24,15 @@ class User extends Authenticatable
     // ];
 
     protected $guarded = [];
+    protected $appends = [
+        'text'
+    ];
+
+    public function getTextAttribute($value)
+    {
+        // return ucfirst($value);
+        return $this->name;
+    }
 
     /**
      * The attributes that should be hidden for serialization.

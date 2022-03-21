@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\BookEntry;
 use App\Http\Requests\StoreBookEntryRequest;
 use App\Http\Requests\UpdateBookEntryRequest;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class BookEntryController extends Controller
 {
@@ -13,9 +16,29 @@ class BookEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+        $list = BookEntry::latest()->paginate(10);
+        return response()->json($list,200);
+    }
+
+    public function user_entries()
+    {
+        $studentlist = BookEntry::latest()->where('user_id',Auth::user()->id)->paginate(10);
+        return response()->json($studentlist,200);
+    }
+
+    public function return_book(Request $request)
+    {
+        BookEntry::where('id',$request->id)->update([
+            'book_return' => 1,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+        return response()->json('success',200);
+    }
+    public function getentry(BookEntry $entry)
+    {
+        return $entry;
     }
 
     /**
@@ -23,9 +46,23 @@ class BookEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        if (count($request->book_ids) > 0) {
+            foreach ($request->book_ids as $book_id) {
+                BookEntry::insert([
+                    'user_id' => $request->user_id,
+                    'book_id' => $book_id,
+                    'time' => $request->time,
+                    'date' => $request->date,
+                    'return_date' => $request->return_date,
+                    'created_at' => Carbon::now()->toDateTimeString(),
+                ]);
+            }
+            return response()->json('success');
+        } else {
+            return response()->json('there is no books', 400);
+        }
     }
 
     /**
@@ -39,16 +76,7 @@ class BookEntryController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\BookEntry  $bookEntry
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BookEntry $bookEntry)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.

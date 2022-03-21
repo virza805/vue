@@ -103,6 +103,11 @@ https://www.youtube.com/watch?v=PnkL6lxDFAU&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D
 https://www.youtube.com/watch?v=aEuTcSztTJI&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=26
 # php artisan make:request RegisterRequest =>
 
+
+for lodear /public/js/pace.js => https://codebyzach.github.io/pace/
+
+# npm install vue3-select2-component --save  => https://npm.io/package/vue3-select2-component
+
 */
 
 

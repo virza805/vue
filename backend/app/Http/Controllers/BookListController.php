@@ -232,4 +232,10 @@ class BookListController extends Controller
         // BookList::whereIn('id', $request->ids)->delete();
         return response()->json('deleted Done', 200);
     }
+
+    public function book_list_for_select2()
+    {
+        $books = BookList::orderBy('name','ASC')->select('id','name')->get();
+        return response()->json($books,200);
+    }
 }

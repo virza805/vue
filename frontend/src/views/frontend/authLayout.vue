@@ -1,5 +1,7 @@
-<template >
+<template>
 	<div class="backend">
+		<frontend-menu />
+		
 		<div class="page-wrapper">
 			<div class="auth-bg">
 				<div class="authentication-box">
@@ -17,8 +19,13 @@
 </template>
 
 <script>
-	export default {};
+import frontendMenu from '../../components/frontendMenu.vue';
+
+export default {
+  components: { frontendMenu },
+};
 </script>
 
 <style>
+
 </style>

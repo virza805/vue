@@ -176,6 +176,11 @@ const routes = [{
                 name: "about",
                 component: about,
             },
+            {
+                path: "portfolio",
+                name: "portfolio",
+                component: portfolio,
+            },
         ],
     },
     // {
@@ -193,11 +198,11 @@ const routes = [{
     //   name: "signup",
     //   component: signup,
     // },
-    {
-        path: "/frontend/portfolio",
-        name: "portfolio",
-        component: portfolio,
-    },
+    // {
+    //     path: "/frontend/portfolio",
+    //     name: "portfolio",
+    //     component: portfolio,
+    // },
 ];
 
 const router = createRouter({

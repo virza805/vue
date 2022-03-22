@@ -71,6 +71,7 @@ export default {
         console.log(res.data);
         this.set_auth_token({ token: res.data.access_token });
         this.set_auth_info(res.data.user);
+        console.log(res.data.user);
       })
       .catch((err)=>{
           console.log(err.response);

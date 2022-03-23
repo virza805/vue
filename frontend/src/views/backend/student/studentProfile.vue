@@ -11,7 +11,7 @@
               :src="get_profile_image_url"
               class="img-fluid"
             />
-            <img v-else alt="" src="/assets/images/user/11.png" />
+            <img v-else alt="" src="/assets/images/email/3.jpg" />
           </div>
           <div class="icon-wrapper">
             <form enctype="multipart/form-data" id="change_profile_form">

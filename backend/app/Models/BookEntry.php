@@ -13,6 +13,8 @@ class BookEntry extends Model
         'user_name',
         'book_name',
         'book_image',
+        'book_published',
+        'book_section',
     ];
 
     public function getUserNameAttribute($value)
@@ -33,6 +35,20 @@ class BookEntry extends Model
     {
         if(BookList::where('id',$this->book_id)->exists()){
             return BookList::where('id',$this->book_id)->first()->image;
+        }
+        return "";
+    }
+    public function getBookPublishedAttribute($value)
+    {
+        if(BookList::where('id',$this->book_id)->exists()){
+            return BookList::where('id',$this->book_id)->first()->published_data;
+        }
+        return "";
+    }
+    public function getBookSectionAttribute($value)
+    {
+        if(BookList::where('id',$this->book_id)->exists()){
+            return BookList::where('id',$this->book_id)->first()->section;
         }
         return "";
     }

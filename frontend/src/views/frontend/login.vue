@@ -27,7 +27,7 @@
       </div>
 
     
-      <div class="form-group d-none">
+      <div class="form-group fd-none">
         <button
           type="button"
           class="btn btn-success m-1"
@@ -101,7 +101,7 @@ export default {
         this.set_auth_token({ token: res.data.access_token });
         this.set_auth_info(res.data.user);
         // localStorage.setItem('b_token', res.data.user.access_token);
-          // console.log(res.data);
+          // console.log(res.data.user.user_role.name);
       })
       .catch(err=>{
           console.log(err.response);

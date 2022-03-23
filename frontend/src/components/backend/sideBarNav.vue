@@ -11,7 +11,7 @@
         <img
           v-else
           class="img-50 rounded-circle"
-          src="/assets/images/user/1.jpg"
+          src="/assets/images/email/2.jpg"
           alt="#"
         />
         
@@ -112,11 +112,12 @@
       <li v-if="get_auth_role_name == 'student'">
         <div class="sidebar-title">Student</div>
         <a href="#" class="sidebar-header">
-          <i class="icon-desktop"></i><span>Links</span>
+          <i class="fa fa-book"></i><span>Book List</span>
           <i class="fa fa-angle-right pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
           <!-- <li>
+            https://fontawesome.com/v5/search?q=book%20a&s=solid%2Cbrands
             <router-link :to="{ path: 'studentProfile' }">
               <i class="fa fa-angle-right"></i>Profile
             </router-link>

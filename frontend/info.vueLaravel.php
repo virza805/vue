@@ -113,6 +113,7 @@ for lodear /public/js/pace.js => https://codebyzach.github.io/pace/
 */
 
 # npm run build => for production | before setup main.js & auth_store.js(line_no: 19) live api host url
-
+// Note that the development build is not optimized.
+//   To create a production build, run npm run build.
 // <!-- <span style="color: #caa659;">:</span> -->
 

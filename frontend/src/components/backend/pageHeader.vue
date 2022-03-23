@@ -1,7 +1,7 @@
 <template>
     <div class="page-main-header">
         <div class="main-header-left">
-            <div class="logo-wrapper">
+            <div class="logo-wrapper text-center">
                 <a href="index.html">
                     <img src="/assets/images/logo-light.png" class="image-dark" alt="" />
                     <img src="/assets/images/logo-light-dark-layout.png" class="image-light" alt="" />
@@ -122,11 +122,23 @@
                             </div>
                         </div>
                         <ul class="profile-dropdown onhover-show-div p-20">
-                            <li>
-                                <a href="#">
+                            <li  v-if="get_auth_role_name == 'admin'">
+                                <router-link :to="{ name: 'adminProfile' }">
                                     <i class="icon-user"></i>
-                                    Edit Profile
-                                </a>
+                                    eAdmin P.
+                                </router-link>
+                            </li>
+                            <li  v-if="get_auth_role_name == 'management'">
+                                <router-link :to="{ name: 'managementProfile' }">
+                                    <i class="icon-user"></i>
+                                    eManagement P.
+                                </router-link>
+                            </li>
+                            <li  v-if="get_auth_role_name == 'student'">
+                                <router-link :to="{ name: 'studentProfile' }">
+                                    <i class="icon-user"></i>
+                                    eStudent P.
+                                </router-link>
                             </li>
                             <li>
                                 <a href="#">
@@ -147,7 +159,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#"  @click="get_logout()" >
                                     <i class="icon-power-off"></i>
                                     Logout
                                 </a>
@@ -164,11 +176,32 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
     name: 'page-header',
+    methods: {
+        ...mapMutations(["set_logout"]),
+        get_logout: function () {
+            window.axios.get("/user/logout").then((res) => {
+                console.log(res.data);
+            });
+        this.$router.replace({ name: "login" });
+        this.set_logout();
+        },
+    },
+    computed: {
+        ...mapGetters([
+        "get_auth_role_name",
+        "get_check_auth_status",
+        "get_auth_info",
+        "get_profile_image_url",
+        ]),
+    },
 }
 </script>
 
 <style>
-
+.logo-wrapper.text-center{
+    margin: 0 auto;
+}
 </style>

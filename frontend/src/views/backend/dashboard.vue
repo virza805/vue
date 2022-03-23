@@ -32,14 +32,14 @@
                         <div class="page-header">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h3>Sample Page
-                                        <small>Universal Admin panel</small>
+                                    <h3>Page title show
+                                        <small> Wellcome <b class="text-success"><i>{{ get_auth_info.username }}</i></b> from Universal <b class="text-success"><i>{{ get_auth_info.role_name }}</i></b> panel</small>
                                     </h3>
                                 </div>
                                 <div class="col-lg-6">
                                     <ol class="breadcrumb pull-right">
                                         <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-                                        <li class="breadcrumb-item active">Sample Page</li>
+                                        <li class="breadcrumb-item active">Page title show</li>
                                     </ol>
                                 </div>
                             </div>
@@ -68,8 +68,18 @@
 <script>
 import PageHeader from '../../components/backend/pageHeader.vue'
 import SideBarNav from '../../components/backend/sideBarNav.vue'
+
+import { mapGetters } from "vuex";
 export default {
   components: { PageHeader, SideBarNav },
+  computed: {
+    ...mapGetters([
+      "get_auth_role_name",
+      "get_check_auth_status",
+      "get_auth_info",
+      "get_profile_image_url",
+    ]),
+  },
 
 }
 </script>

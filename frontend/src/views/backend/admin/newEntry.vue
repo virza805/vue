@@ -120,7 +120,7 @@
                     .then(res=>{
                         console.log(res.data);
                         this.myBooksValue = [];
-                    })
+                })
             }
 		},
 	};

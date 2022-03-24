@@ -9,6 +9,7 @@ import entryList from "../views/backend/admin/entryList.vue";
 import newEntry from "../views/backend/admin/newEntry.vue";
 import adminProfile from "../views/backend/admin/profile.vue";
 import users from "../views/backend/admin/users.vue";
+import adminAddNewUser from "../views/backend/admin/adminAddNewUser.vue";
 // import userList from "../views/backend/admin/userList.vue";
 
 import student from "../views/backend/student.vue";
@@ -82,6 +83,11 @@ const routes = [{
                 path: "new-entry",
                 name: "newEntry",
                 component: newEntry,
+            },
+            {
+                path: "add-new-user",
+                name: "adminAddNewUser",
+                component: adminAddNewUser,
             },
         ],
     },

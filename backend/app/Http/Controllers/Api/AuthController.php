@@ -164,4 +164,41 @@ class AuthController extends Controller
         return response()->json($user, 200);
     }
 
+
+
+
+    // Show all user in Admin panel
+    public function all_user(Request $request)
+    {
+        $user_list = User::latest()->orderBy('id', 'DESC')->paginate(10);
+        return response()->json($user_list, 200);
+    }
+
+    // Add New User in Admin panel
+    public function add_new_user(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'min:4'],
+            'role_serial' => ['required'],
+            'email' => ['required'],
+            'image' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'data' => $validator->errors(),
+            ], 422);
+        }
+
+        $book = User::create($request->except('image'));
+        if ($request->hasFile('image')) {
+            $book->image = Storage::put('uploads', $request->file('image'));
+            $book->save();
+        }
+
+        return response()->json($book, 200);
+
+    }
+
 }

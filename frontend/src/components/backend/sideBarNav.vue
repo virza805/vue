@@ -23,13 +23,18 @@
       <li v-if="get_auth_role_name == 'admin'">
         <div class="sidebar-title">Admin</div>
         <a href="#" class="sidebar-header">
-          <i class="icon-desktop"></i><span>Links</span>
+          <i class="fa fa-cubes" aria-hidden="true"></i><span>Links</span>
           <i class="fa fa-angle-right pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
           <li>
-            <router-link :to="{ name: 'adminProfile' }">
+            <router-link :to="{ name: 'admin' }">
               <i class="fa fa-angle-right"></i>Home
+            </router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'adminProfile' }">
+              <i class="fa fa-angle-right"></i>Profile Edit
             </router-link>
           </li>
           <li>
@@ -101,9 +106,34 @@
         </ul>
       </li>
       <!-- end admin Student -->
+
+      <li v-if="get_auth_role_name == 'admin'">
+        <a href="#" class="sidebar-header">
+          <i class="fa fa-pagelines" aria-hidden="true"></i><span>Corse Plan</span>
+          <i class="fa fa-angle-right pull-right"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li>
+            <router-link :to="{ name: 'userList' }">
+              <i class="fa fa-angle-right"></i>All Users
+            </router-link>
+          </li>
+
+          <li>
+            <router-link :to="{ name: 'adminAddNewUser' }">
+              <i class="fa fa-angle-right"></i>Add New User
+            </router-link> 
+          </li>
+        </ul>
+      </li>
+      <!-- end admin PLAN https://fontawesome.com/v4/icons/ -->
     
       <li v-if="get_auth_role_name == 'student'">
         <div class="sidebar-title">Student</div>
+        <router-link  :to="{ name: 'student' }" class="sidebar-header">
+          <i class="fa fa-diamond" aria-hidden="true"></i><span>Home</span>
+          <i class="fa fa-angle-right pull-right"></i>
+        </router-link>
         <router-link  :to="{ name: 'studentBookList' }" class="sidebar-header">
           <i class="fa fa-book"></i><span>Book List</span>
           <i class="fa fa-angle-right pull-right"></i>
@@ -117,6 +147,10 @@
       
       <li v-if="get_auth_role_name == 'management'">
         <div class="sidebar-title">Management</div>
+        <router-link  :to="{ name: 'management' }" class="sidebar-header">
+          <i class="fa fa-home" aria-hidden="true"></i><span>Home</span>
+          <i class="fa fa-angle-right pull-right"></i>
+        </router-link>
         <router-link  :to="{ name: 'managementProfile' }" class="sidebar-header">
           <i class="fa fa-edit"></i><span>Profile Edit</span>
           <i class="fa fa-angle-right pull-right"></i>

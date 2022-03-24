@@ -36,6 +36,8 @@ Route::group(['prefix' => 'v1'], function(){
         Route::get('/logout', [AuthController::class, 'logout']);
         Route::post('/update-profile', [AuthController::class, 'update_profile']);
         Route::post('/update-profile-pic', [AuthController::class, 'update_profile_pic']);
+        Route::get('/all-user', [AuthController::class, 'all_user']);
+        Route::post('/add-new-user', [AuthController::class, 'add_new_user']);
 
         Route::get('/user-list-for-select2', [AuthController::class, 'user_list_for_select2']);
 

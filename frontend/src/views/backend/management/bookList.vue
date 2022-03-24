@@ -18,11 +18,11 @@
                   <th class="text-center" style="width: 20%">Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="management-img">
                 <tr v-for="i in 5" :key="i">
                   <td>1</td>
                   <td>
-                    <img src="/assets/images/product/1.png" alt="image" />
+                    <img src="/assets/images/mobile-clock-wallpaper.jpg" alt="image" />
                   </td>
                   <td>Book</td>
                   <td>Mr.Stark</td>
@@ -62,4 +62,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style  scoped>
+.management-img img{
+  width:70px;
+}
+</style>
+

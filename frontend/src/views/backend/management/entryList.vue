@@ -19,11 +19,11 @@
                   <th class="text-center" style="width: 20%">Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="management-img-entry">
                 <tr v-for="i in 5" :key="i">
                   <td>1</td>
                   <td>
-                    <img src="/assets/images/product/1.png" alt="image" />
+                    <img src="/assets/images/auth-bg.jpg" alt="image" />
                   </td>
                   <td>Book</td>
                   <td>11:59 pm</td>
@@ -57,4 +57,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style  scoped>
+.management-img-entry img{
+  width:70px;
+}
+</style>

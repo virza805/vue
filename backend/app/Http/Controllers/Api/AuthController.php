@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use PhpParser\Node\Expr\New_;
-use SebastianBergmann\Environment\Console;
 
 // use Illuminate\Auth\Events\Validated;
 
@@ -70,8 +69,6 @@ class AuthController extends Controller
             $user = User::where('id',Auth::user()->id)->with('user_role')->first();
             $data['access_token'] = $user->createToken('accessToken')->accessToken;
             $data['user'] = $user;
-
-            // console.log($data);
             return response()->json($data, 200,);
 
         }

@@ -81,6 +81,7 @@ class AuthController extends Controller
         ], 200);
     }
 
+
     public function update_profile(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'min:4'],
@@ -179,9 +180,59 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'min:4'],
-            'role_serial' => ['required'],
-            'email' => ['required'],
-            'image' => ['required'],
+            // 'email' => ['required', 'email', 'exists:users'],
+            'email' => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'min:8', 'confirmed'],
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'data' => $validator->errors(),
+            ], 422);
+        }else{
+            $data = $request->only(['name', 'email', 'password','role_serial']);
+            // $data['role_serial'] = 4;
+            $data['password'] = Hash::make($request->password);
+            $user = User::create($data);
+
+            // return response()->json($user, 200,);
+
+        }
+
+        // $book = User::create($request->except('image'));
+        // if ($request->hasFile('image')) {
+        //     $book->image = Storage::put('uploads', $request->file('image'));
+        //     $book->save();
+        // }
+
+        return response()->json($user, 200);
+
+    }
+
+      /**
+     * Delete the specified resource from storage.
+     *
+
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if(file_exists(public_path($user->image))) {
+            unlink(public_path($user->image));
+        }
+        $user->delete();
+        return response()->json('deleted Done', 200);
+    }
+    public function update_role(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'min:4'],
+            'author' => ['required'],
+            'section' => ['required'],
+            // 'image' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -191,14 +242,15 @@ class AuthController extends Controller
             ], 422);
         }
 
-        $book = User::create($request->except('image'));
+        $book = User::find($request->id);
+        // $book = BookList::create($request->except('image'));
+        $book->fill($request->except('image'))->save();
         if ($request->hasFile('image')) {
-            $book->image = Storage::put('uploads', $request->file('image'));
+            $book->image = Storage::put('upload/books', $request->file('image'));
             $book->save();
         }
 
         return response()->json($book, 200);
-
     }
 
 }

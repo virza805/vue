@@ -124,6 +124,16 @@
               <i class="fa fa-angle-right"></i>Add New User
             </router-link> 
           </li>
+          <li>
+            <router-link :to="{ name: 'adminUpdateRole' }">
+              <i class="fa fa-angle-right"></i>Update User Position
+            </router-link> 
+          </li>
+          <li>
+            <router-link :to="{ name: 'adminAddTask' }">
+              <i class="fa fa-angle-right"></i>Add Task
+            </router-link> 
+          </li>
         </ul>
       </li>
       <!-- end admin PLAN https://fontawesome.com/v4/icons/ -->
@@ -140,6 +150,10 @@
         </router-link>
         <router-link  :to="{ name: 'studentProfile' }" class="sidebar-header">
           <i class="fa fa-edit"></i><span>Profile Edit</span>
+          <i class="fa fa-angle-right pull-right"></i>
+        </router-link>
+        <router-link  :to="{ name: 'addTask' }" class="sidebar-header">
+          <i class="fa fa-plus" aria-hidden="true"></i><span>Add Task</span>
           <i class="fa fa-angle-right pull-right"></i>
         </router-link>
         

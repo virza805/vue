@@ -10,6 +10,8 @@ import newEntry from "../views/backend/admin/newEntry.vue";
 import adminProfile from "../views/backend/admin/profile.vue";
 import users from "../views/backend/admin/users.vue";
 import adminAddNewUser from "../views/backend/admin/adminAddNewUser.vue";
+import adminAddTask from "../views/backend/admin/adminAddTask.vue";
+import adminUpdateRole from "../views/backend/admin/adminUpdateRole.vue";
 // import userList from "../views/backend/admin/userList.vue";
 
 import student from "../views/backend/student.vue";
@@ -17,6 +19,7 @@ import studentLayout from "../views/backend/student/studentLayout.vue";
 import studentBookList from "../views/backend/student/bookList.vue";
 import studentEntryDetails from "../views/backend/student/entryDetails.vue";
 import studentProfile from "../views/backend/student/studentProfile.vue";
+import addTask from "../views/backend/student/addTask.vue";
 
 
 import management from "../views/backend/management.vue";
@@ -89,6 +92,16 @@ const routes = [{
                 name: "adminAddNewUser",
                 component: adminAddNewUser,
             },
+            {
+                path: "add-task",
+                name: "adminAddTask",
+                component: adminAddTask,
+            },
+            {
+                path: "update-role",
+                name: "adminUpdateRole",
+                component: adminUpdateRole,
+            },
         ],
     },
 
@@ -115,6 +128,16 @@ const routes = [{
                 path: "entry-details/:id",
                 name: "studentEntryDetails",
                 component: studentEntryDetails,
+            },
+            {
+                path: "add-task",
+                name: "addTask",
+                component: addTask,
+            },
+            {
+                path: "edit-task",
+                name: "taskEdit",
+                component: addTask,
             },
         ]
     },

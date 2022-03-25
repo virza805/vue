@@ -117,3 +117,9 @@ for lodear /public/js/pace.js => https://codebyzach.github.io/pace/
 //   To create a production build, run npm run build.
 // <!-- <span style="color: #caa659;">:</span> -->
 
+
+# php artisan make:model TaskList -a => for new table in database
+
+# php artisan migrate => 
+
+

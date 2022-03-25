@@ -10,7 +10,7 @@
             <form
               action=""
               id="user_form"
-              @submit.prevent="save_user"
+              @submit.prevent="save_user()"
               enctype="multipart/form-data"
             >
             <div class="row">
@@ -19,7 +19,7 @@
                         <label for="name">User Name</label>
                         <input type="text" name="name" class="form-control" />
                     </div>
-<!--                     
+                    
                     <div class="form-group">
                         <label class="col-form-label">Password</label>
                         <input
@@ -28,7 +28,7 @@
                         class="form-control"
                         placeholder="**********"
                         />
-                    </div> -->
+                    </div>
                     
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -38,11 +38,11 @@
                 </div>
                 <div class="col-md-6">
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="role">User Role</label>
                         <input type="text" name="role" class="form-control" />
-                    </div>
-                    <!-- <div class="form-group">
+                    </div> -->
+                    <div class="form-group">
                         <label for="user_role">Choose User Role:</label>
                         <select id="user_role" name="user_role" class="form-control">
                             <option value="2">Admin</option>
@@ -50,8 +50,8 @@
                             <option value="4">Student</option>
                             <option value="0" selected>Guest</option>
                         </select>
-                    </div> -->
-<!--                     
+                    </div>
+                    
                     <div class="form-group">
                         <label class="col-form-label">Retype Password</label>
                         <input
@@ -60,11 +60,11 @@
                         class="form-control"
                         placeholder="**********"
                         />
-                    </div> -->
-                    <div class="form-group">
+                    </div>
+                    <!-- <div class="form-group">
                         <label for="">Image</label>
                         <input type="file" name="image" class="form-control" />
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -114,7 +114,8 @@ export default {
     //     }
     //   });
     // },
-    save_user: function () {
+    // ...mapMutations(["set_auth_token", "set_auth_info"]),
+    save_user: function ()  {
       let form_data = new FormData(document.getElementById("user_form"));
     //   if (this.url === "/book-list/update") {
     //     form_data.append("id", this.id);
@@ -128,10 +129,12 @@ export default {
     //       console.log(err.response);
     //     })
 
-    window.axios
-        .post('/user/add-new-user', form_data).then(res => {
+    window.axios.post('/user/add-new-user', form_data).then((res) => {
+      
           console.log(res.data);
-          this.$router.push({ name: "userList" });
+        // this.set_auth_token({ token: res.data.access_token });
+        // this.set_auth_info(res.data.user);
+          this.$router.push({ name: "userList" }); // go to All User list page
           this.userValue = [];
         })
         .catch((err) => {

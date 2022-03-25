@@ -22,7 +22,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="entry in book_entries.data" :key="entry.id">
+								<tr v-for="(entry,index) in book_entries.data" :key="entry.id">
 									<td>{{ entry.id }}</td>
 									<td>
 										<div v-if="entry.image">
@@ -40,21 +40,17 @@
 									<td>{{ entry.email }}</td>
 									<td>{{ entry.role_serial }}</td>
 									<td>
-                    <b v-if="entry.role_serial == '1'">Super Admin</b>
-                    <b v-else-if="entry.role_serial == '2'">Admin</b>
-                    <b v-else-if="entry.role_serial == '3'">Management</b>
-                    <b v-else-if="entry.role_serial == '0'">Guest</b>
-                    <b v-else >Student</b>
-                  </td>
+										<b v-if="entry.role_serial == '1'">Super Admin</b>
+										<b v-else-if="entry.role_serial == '2'">Admin</b>
+										<b v-else-if="entry.role_serial == '3'">Management</b>
+										<b v-else-if="entry.role_serial == '0'">Guest</b>
+										<b v-else >Student</b>
+									</td>
 									<td>
 										<div class="d-flex justify-content-end">
-											<a href="#" v-if="entry.book_return"
-												class="btn btn-sm btn-success mx-1">Returned</a>
-											<a href="#" @click.prevent="return_book(entry)" v-else
-												class="btn btn-sm btn-danger mx-1">Return</a>
-
-											<router-link :to="{ name: 'studentEntryDetails', params: { id: entry.id } }"
-												class="btn btn-sm btn-primary mx-1">Show Details</router-link>
+										<!-- <router-link :to="{name: 'adminUpdateRole', params:{id: entry.id}}" class="btn btn-sm btn-warning mx-1">Edit</router-link> -->
+										<a hraf="#" class="btn btn-sm btn-warning mx-1">Edit</a>
+										<p @click.prevent="delete_user(entry,index)" class="btn btn-sm btn-danger mx-1">Delete</p>
 										</div>
 									</td>
 								</tr>
@@ -101,15 +97,18 @@
 					this.per_page = res.data.per_page;
 				});
 			},
-			return_book: function (entry) {
-				let con = confirm('sure');
-				con &&
-				window.axios.post(`/book-entry/return-book`, {id: entry.id})
-				.then((res) => {
-					console.log(res.data);
-					entry.book_return = 1;
-				});
-			}
+			delete_user: function(entry,index) {
+			let con = confirm('Sure want to delete??');
+			console.log(index);
+			if(con){
+				window.axios.post('/user/delete', {id: entry.id})
+				.then(res=>{
+				console.log(res.data);
+				// this.book_list.data.splice(index,1); 
+				this.getData(); // for show only 10 data
+				})
+			  }
+			},
 		},
 		computed: {
 			...mapGetters(["get_server_url"]),

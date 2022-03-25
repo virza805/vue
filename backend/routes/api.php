@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\BookListController;
 use App\Http\Controllers\BookEntryController;
+use App\Http\Controllers\TaskListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,8 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/update-profile', [AuthController::class, 'update_profile']);
         Route::post('/update-profile-pic', [AuthController::class, 'update_profile_pic']);
         Route::get('/all-user', [AuthController::class, 'all_user']);
-        Route::post('/add-new-user', [AuthController::class, 'add_new_user']);
+        Route::post('/add-new-user', [AuthController::class, 'add_new_user']); // Note work
+        Route::post('/delete', [AuthController::class, 'delete']); // Note work
 
         Route::get('/user-list-for-select2', [AuthController::class, 'user_list_for_select2']);
 
@@ -63,6 +65,21 @@ Route::group(['prefix' => 'v1'], function(){
         Route::get('/user-entries', [BookEntryController::class, 'user_entries']);
         Route::post('/return-book', [BookEntryController::class, 'return_book']);
         Route::get('/getentry/{entry}', [BookEntryController::class, 'getentry']);
+    });
+
+    Route::group(['prefix' => '/task', 'middleware'=>['auth:api'] ], function(){
+
+        Route::get('/', [TaskListController::class, 'task_list']);
+        Route::post('/store', [TaskListController::class, 'store']);
+        Route::post('/update', [TaskListController::class, 'update']);
+
+        // Route::post('/return-book', [BookEntryController::class, 'return_book']);
+
+        Route::get('/get/{id}', [TaskListController::class, 'get']);
+        Route::post('/delete', [TaskListController::class, 'delete']);
+        Route::post('/delete-multi', [TaskListController::class, 'delete_multi']);
+        // Route::get('/book-list-for-select2', [TaskListController::class, 'book_list_for_select2']);
+
     });
 
 });

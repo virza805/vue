@@ -73,7 +73,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/store', [TaskListController::class, 'store']);
         Route::post('/update', [TaskListController::class, 'update']);
 
-        // Route::post('/return-book', [BookEntryController::class, 'return_book']);
+        Route::post('/success-task', [TaskListController::class, 'success_task']);
 
         Route::get('/get/{id}', [TaskListController::class, 'get']);
         Route::post('/delete', [TaskListController::class, 'delete']);

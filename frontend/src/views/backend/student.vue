@@ -6,7 +6,7 @@
           <div class="card-header">
             <div class="d-flex justify-content-between flex-wrap">
                 
-              <h4>Your Task List</h4>
+              <h4>{{ get_auth_info.role_name }} <span class="task-holder-name">({{ get_auth_info.username }})</span> Task List</h4>
 
               <input
                 type="text"
@@ -34,7 +34,12 @@
                   <th>Title</th>
                   <th>Description</th>
                   <th>End Date</th>
-                  <th class="text-center" style="width: 20%">Action</th>
+                  <th class="text-center" style="width: 20%">Action 
+                      
+        <router-link  :to="{ name: 'addTask' }" class="sidebar-header  pull-right">
+          <i class="fa fa-plus" aria-hidden="true"></i> <span>Add Task</span>
+        </router-link>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -66,11 +71,11 @@
                   <td>{{ book.c_date }}</td>
                   <td>
                     <div class="d-flex justify-content-end">
-                      <a href="#" class="btn btn-sm btn-primary mx-1"
-                        >Not done yet</a
-                      >
-                      <router-link :to="{name: 'taskEdit', params:{id: book.id}}" class="btn btn-sm btn-warning mx-1">Edit</router-link>
-                      <p @click.prevent="delete_book(book,index)" class="btn btn-sm btn-danger mx-1">Delete</p>
+                      <a href="#" v-if="book.success_task" class="btn btn-sm btn-success mx-1 "><i class="fa fa-check" aria-hidden="true"></i> Done</a>
+					  <a href="#" v-else @click.prevent="success_task(book)" class="btn btn-sm btn-primary mx-1"><i class="fa fa-question" aria-hidden="true"></i> Not done yet</a>
+
+                      <router-link :to="{name: 'taskEdit', params:{id: book.id}}" class="btn btn-sm btn-warning mx-1"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</router-link>
+                      <p @click.prevent="delete_book(book,index)" class="btn btn-sm btn-danger mx-1"><i class="fa fa-trash" aria-hidden="true"></i> Delete</p>
                     </div>
                   </td>
                 </tr>
@@ -177,12 +182,29 @@ export default {
       this.getData();
     },
 
+    success_task: function (book) {
+				let con = confirm('sure');
+				con &&
+				window.axios.post(`/task/success-task`, {id: book.id})
+				.then((res) => {
+					console.log(res.data);
+					book.success_task = 1;
+			});
+		}
+
   },
   
   computed: {
-    ...mapGetters(["get_server_url"]),
+    ...mapGetters([
+        "get_server_url",
+        "get_auth_info",
+        ]),
   },
 };
 </script>
 
-<style></style>
+<style>
+.task-holder-name{
+    font-size: 12px;
+}
+</style>

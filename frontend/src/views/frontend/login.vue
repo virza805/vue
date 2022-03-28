@@ -2,7 +2,7 @@
 <div>
   <h3 class="text-center">Login</h3>
   <h6 class="text-center">
-    Enter your Username and Password For Login or Signup
+    Enter your email and Password For Login.
   </h6>
   <div class="card mt-4 p-4">
     <form class="theme-form" id="login_form" @submit.prevent="login_submit">
@@ -13,7 +13,7 @@
           type="text"
           name="email"
           class="form-control"
-          placeholder="superadmin@gmail.com"
+          placeholder="Admin | Management | Student"
         />
       </div>
       <div class="form-group">
@@ -22,12 +22,11 @@
           type="password"
           name="password"
           class="form-control"
-          placeholder="12345678"
         />
       </div>
 
     
-      <div class="form-group fd-none">
+      <div class="form-group d-none">
         <button
           type="button"
           class="btn btn-success m-1"
@@ -54,18 +53,16 @@
 
       <div class="form-row">
         <div class="col-sm-3">
-          <button type="submit" class="btn btn-secondary">Sign In</button>
+          <button type="submit" class="btn btn-secondary"> Login </button>
         </div>
         <div class="col-sm-8">
-          <div class="text-left mt-2 m-l-20">
-            Don't have an account? &nbsp;&nbsp;
-            <router-link :to="{ name: 'signup' }">singup</router-link>
+          <div class="text-left mt-2 m-l-20"> Don't have an account? &nbsp;&nbsp;
+            <router-link :to="{ name: 'signup' }"> Signup </router-link>
           </div>
           <br />
-          <div class="text-left mt-2 m-l-20">
-            Forget Password??
+          <div class="text-left mt-2 m-l-20"> Forget Password??
             <!-- <router-link :to="{ name: 'signup' }">Click here</router-link> -->
-            <router-link :to="{ name: 'forget' }">Click here</router-link>
+            <router-link :to="{ name: 'forget' }"> Click here </router-link>
           </div>
         </div>
       </div>

@@ -95,7 +95,7 @@ class AuthController extends Controller
             ], 422);
         }
         $data = $request->only(['name', 'password']);
-        $data['role_serial'] = 4;
+        // $data['role_serial'] = 4;
         $data['password'] = Hash::make($request->password);
         $user = User::find(Auth::user()->id)->fill($data)->save();
 
@@ -132,8 +132,9 @@ class AuthController extends Controller
         $user = User::where('email',$request->email)->first();
         $user->forget_token = Hash::make(uniqid(50));
         $user->save();
+
         // hello@example.com | b4b806696d02e8
-        return Mail::to('hello@example.com')->send(new ForgetPassword($user->forget_token));
+        return Mail::to($user['email'])->send(new ForgetPassword($user->forget_token));
     }
 
     public function forget_token(Request $request)
@@ -155,7 +156,7 @@ class AuthController extends Controller
         $user->password = Hash::make($temp_pass);
         $user->save();
 
-        return Mail::to('hello@example.com')->send(new ForgetPassword(" your password is:  ".$temp_pass));
+        return Mail::to($user['email'])->send(new ForgetPassword(" your password is:  ".$temp_pass));
     }
 
     // for selector import

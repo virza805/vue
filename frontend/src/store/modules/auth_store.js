@@ -16,7 +16,8 @@ const state = {
     },
     auth_role_name: 'guest',
     auth_token: '',
-    server_url: 'http://127.0.0.1:8000',
+    // server_url: 'http://127.0.0.1:8000',
+    server_url: 'https://vuelaravel.vir-za.com',
 }
 
 // getters
@@ -26,7 +27,7 @@ const getters = {
     get_auth_role_name: state => state.auth_role_name,
     get_auth_token: state => state.auth_token,
     get_server_url: state => state.server_url,
-    get_profile_image_url: state => state.server_url+'/'+state.auth_info.image,
+    get_profile_image_url: state => state.server_url + '/' + state.auth_info.image,
 }
 
 // action

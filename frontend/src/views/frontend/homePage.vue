@@ -13,58 +13,58 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="single-feature-item">
+                    <a href="https://virza805.github.io/RRF-150-Section/" target="_blank" class="single-feature-item">
                         <div class="feature-ico">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-snowflake-o" aria-hidden="true"></i>
                         </div>
-                        <h2>Tanvir Hasan</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa!</p>
-                    </div>
+                        <h2>Web statick section</h2>
+                        <p>Web 140+ Section with some project</p>
+                    </a>
                 </div> <!--End Left side 1 item-->
                 <div class="col-md-6">
-                    <div class="single-feature-item left-icon">
+                    <a href="https://vir-za.com/" target="_blank" class="single-feature-item left-icon">
                         <div class="feature-ico">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-wordpress" aria-hidden="true"></i>
                         </div>
-                        <h2>Tanvir Hasan</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa!</p>
-                    </div>
+                        <h2>My Live Site</h2>
+                        <p> WordPress Custom Theme</p>
+                    </a>
                 </div> <!--End Left side 2 item-->
                 <div class="col-md-6">
-                    <div class="single-feature-item f-padding-left">
+                    <a href="http://vir-za.com/m_react/" target="_blank" class="single-feature-item f-padding-left">
                         <div class="feature-ico">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-diamond" aria-hidden="true"></i>
                         </div>
-                        <h2>Tanvir Hasan</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa!</p>
-                    </div>
+                        <h2>React App</h2>
+                        <p>Simple react project</p>
+                    </a>
                 </div> <!--End Left side 3 item-->
                 <div class="col-md-6">
-                    <div class="single-feature-item f-padding-right left-icon">
+                    <a href="https://service24.vir-za.com/" target="_blank" class="single-feature-item f-padding-right left-icon">
                         <div class="feature-ico">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-themeisle" aria-hidden="true"></i>
                         </div>
-                        <h2>Tanvir Hasan</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa!</p>
-                    </div>
+                        <h2>Dive Theme</h2>
+                        <p>Simple dive project</p>
+                    </a>
                 </div> <!--End Left side 4 item-->
                 <div class="col-md-6">
-                    <div class="single-feature-item">
+                    <a href="https://www.linkedin.com/in/1mdalamin1/" target="_blank" class="single-feature-item">
                         <div class="feature-ico">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
                         </div>
                         <h2>Tanvir Hasan</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa!</p>
-                    </div>
+                        <p>My linkedin profile</p>
+                    </a>
                 </div> <!--End Left side 5 item-->
                 <div class="col-md-6">
-                    <div class="single-feature-item left-icon">
+                    <a href="https://seopage1.net/" target="_blank" class="single-feature-item left-icon">
                         <div class="feature-ico">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
                         </div>
-                        <h2>Tanvir Hasan</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa!</p>
-                    </div>
+                        <h2>Still working on office</h2>
+                        <p>Seopage1 it solution</p>
+                    </a>
                 </div> <!--End Left side 6 item-->
             </div>
         </div>
@@ -83,12 +83,12 @@
             <div class="features-wrap">
               <div class="section_title">
                 <img src="https://virza805.github.io/RRF-150-Section/img/S_66_logo.png" alt="">
-                <h2>RRF 150 Section V_65</h2>
+                <h2> <a href="https://vir-za.com/af/acme/"> Show Task List </a></h2>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo.</p>
               </div>
               <div class="row">
-                <div class="col-md-4">
-                  <h3>Lorem, ipsum dolor.</h3>
+                <div class="col-md-4 text-left">
+                  <h3>Task Completed.</h3>
                   <ul>
                       <li>
                                 1. vue cli install.
@@ -128,14 +128,14 @@
                             </li>
                   </ul>
                 </div>
-                <div class="col-md-4">
-                  <h3>Lorem, ipsum dolor.</h3>
+                <div class="col-md-4  text-left">
+                  <h3>. </h3>
                   <ul>
                       <li>
-                                13. book management.
+                                13. Book management.
                             </li>
                             <li>
-                                14. book entry management.
+                                14. Book entry management.
                             </li>
                             <li>
                                 15. vue select2.
@@ -163,11 +163,7 @@
                                 22. Jquery setup.
                             </li>
                             <li>
-                                23. github hosting.
-                            </li>
-
-                            <li>
-                                24. cpanel hosting.
+                                23. cPanel hosting.
                             </li>
                   </ul>
                 </div>
@@ -183,7 +179,11 @@
 
         <!-- About Area Start -->
         
-        <!-- End of About Area -->
+<section>
+    <div class="container-flud">
+        <img style="width:100%" src="/assets/images/tanvir.png">
+    </div>
+</section>
         
         
         <!-- End of Event Area -->
@@ -229,6 +229,12 @@
      </div>
    </div>
  </section>
+
+<section>
+    <div class="container">
+        <img style="margin:0 auto" src="/assets/images/virzaOk.gif">
+    </div>
+</section>
 
     </div>
 </template>
@@ -331,10 +337,10 @@ ul.custom_ul li {
 }
 .round-bg::after{
     position: absolute;
-    left: 50%;
-    top:14%;
-    height: 450px;
-    width:450px;
+    left: 51%;
+    top:7%;
+    height: 400px;
+    width:400px;
     content:"";
     z-index: -1;
     border-radius: 50%;
@@ -345,6 +351,7 @@ ul.custom_ul li {
     background-color: #333;
 }
 .single-feature-item{
+    display: block;
     position: relative;
     z-index: 1;
 }
@@ -401,7 +408,7 @@ ul.custom_ul li {
 }
 .single-feature-item.f-padding-right{
     margin-right: 0;
-    margin-left:120px;
+    margin-left:100px;
 }
 /* RRF 150 Section Video_76 # 23/1/2020 10:42am End */
 
@@ -423,5 +430,7 @@ ul.custom_ul li {
     right: -100px;
     bottom:0;
 }
-
+a.single-feature-item {
+    color: #2a3142;
+}
 </style>

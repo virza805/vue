@@ -4,7 +4,8 @@
       <div class="col-sm-12 col-md-8 col-lg-9">
         <div class="card">
           <div class="card-header">
-            <h4>Add New Task</h4>
+            <h4 v-if="url === '/task/update'" >Edit Task</h4>
+            <h4 v-else >Add New Task</h4>
           </div>
           <div class="card-body">
             <form
@@ -20,8 +21,8 @@
               </div>
               <div class="form-group">
                 <label for="dec">Description</label>
-                <!-- <input type="text" name="dec" class="form-control" /> -->
-                <textarea id="dec" name="dec" rows="2" cols="50" class="form-control" />
+                <input type="text" name="dec" class="form-control" />
+                <!-- <textarea name="dec" rows="2" cols="50" class="form-control" /> -->
               </div>
               <div class="d-flex">
                 <div class="form-group">
@@ -36,7 +37,8 @@
               
 
               <div class="form-group">
-                <button type="submit" class="btn btn-secondary">Submit</button>
+                <button type="submit" v-if="url === '/task/update'" class="btn btn-warning">Update Now <i class="fa fa-hand-o-up" aria-hidden="true"></i></button>
+                <button type="submit" v-else class="btn btn-secondary"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Submit</button>
               </div>
             </form>
           </div>
@@ -91,15 +93,6 @@ export default {
         .catch(err=>{
           console.log(err.response);
         })
-      // window.axios
-      //   .post(this.url, form_data)
-      //   .then((res) => {
-      //     console.log(res.data);
-      //     this.$router.push({ name: "bookList" });
-      //   })
-        // .catch((err) => {
-        //   console.log(err.response);
-        // });
     },
   },
   computed: {

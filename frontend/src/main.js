@@ -4,8 +4,8 @@ let $ = (window.jQuery = require("jquery"));
 window.$ = $;
 
 window.axios = require("axios");
-window.axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
-// window.axios.defaults.baseURL = "https://libraryapi.sobujdiganta.com/api/v1";
+// window.axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
+window.axios.defaults.baseURL = "https://vuelaravel.vir-za.com/api/v1";
 
 window.axios.interceptors.response.use(
     (response) => response,

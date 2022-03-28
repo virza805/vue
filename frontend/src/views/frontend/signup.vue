@@ -2,7 +2,7 @@
 <div>
   <h3 class="text-center">Sign up</h3>
   <h6 class="text-center">
-    Enter your Username and Password For Login or Signup
+    Enter your Info. for Signup as a Student
   </h6>
   <div class="card mt-4 p-4">
     <form class="theme-form" id="signup_form" @submit.prevent="signup_submit">
@@ -12,7 +12,7 @@
           type="text"
           name="name"
           class="form-control"
-          placeholder="tanvir"
+          placeholder="Enter your name."
         />
       </div>
       <div class="form-group">
@@ -21,7 +21,7 @@
           type="email"
           name="email"
           class="form-control"
-          placeholder="test@gmail.com"
+          placeholder="Valid email"
         />
       </div>
       <div class="form-group">
@@ -30,7 +30,7 @@
           type="password"
           name="password"
           class="form-control"
-          placeholder="**********"
+          placeholder="Minimum 8 Characters"
         />
       </div>
       <div class="form-group">
@@ -39,18 +39,17 @@
           type="password"
           name="password_confirmation"
           class="form-control"
-          placeholder="**********"
+          placeholder="Again password"
         />
       </div>
 
       <div class="form-row">
         <div class="col-sm-3">
-          <button type="submit" class="btn btn-secondary">Sign Up</button>
+          <button type="submit" class="btn btn-secondary"> Sign Up </button>
         </div>
         <div class="col-sm-8">
-          <div class="text-left mt-2 m-l-20">
-            Are you already user?&nbsp;&nbsp;
-            <router-link :to="{ name: 'login' }">login</router-link>
+          <div class="text-left mt-2 ml-4"> Are you already user? 
+            <router-link :to="{ name: 'login' }"> login </router-link>
           </div>
         </div>
       </div>

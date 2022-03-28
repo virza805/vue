@@ -44,10 +44,8 @@
 									<td>{{ entry.return_date }}</td>
 									<td>
 										<div class="d-flex justify-content-end">
-											<a href="#" v-if="entry.book_return"
-												class="btn btn-sm btn-success mx-1">Returned</a>
-											<a href="#" @click.prevent="return_book(entry)" v-else
-												class="btn btn-sm btn-danger mx-1">Return</a>
+											<a href="#" v-if="entry.book_return" class="btn btn-sm btn-success mx-1">Returned</a>
+											<a href="#" @click.prevent="return_book(entry)" v-else class="btn btn-sm btn-danger mx-1">Return</a>
 
 											<router-link :to="{ name: 'studentEntryDetails', params: { id: entry.id } }"
 												class="btn btn-sm btn-primary mx-1">Show Details</router-link>

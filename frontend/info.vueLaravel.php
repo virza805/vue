@@ -82,6 +82,8 @@ php artisan db:seed =>
 }
 ===========================================================================
 start => https://www.youtube.com/watch?v=3YllBlpT19s&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=15
+
+https://www.youtube.com/watch?v=qwUwF_0A2u0&list=PL9piC5qJFU82wfvJPqyr7RLkDUEV9D4t6&index=17
 ============================================================================
 Create a Mail server |> edit .env file|| >>> vir-za.com = https://mailtrap.io/inboxes/1649732/messages {
 MAIL_MAILER=smtp
@@ -122,4 +124,44 @@ for lodear /public/js/pace.js => https://codebyzach.github.io/pace/
 
 # php artisan migrate => 
 
+// yM$a;~ToT9(g
 
+/*
+
+Username:	tanvir@vir-za.com
+Password:	Use the email account’s password.
+Incoming Server:	mail.vir-za.com
+IMAP Port: 143 POP3 Port: 110
+Outgoing Server:	mail.vir-za.com
+SMTP Port: 587
+_____________________________________________
+
+MAIL_MAILER=smtp
+MAIL_HOST=mail.vir-za.com
+MAIL_PORT=587
+MAIL_USERNAME=tanvir@vir-za.com
+MAIL_PASSWORD=yM$a;~ToT9(g
+MAIL_ENCRYPTION=null
+----------------------
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=kleauia_apilaravelvue
+DB_USERNAME=kleauia_apilaravelvue
+DB_PASSWORD=9qG?O,gL^6U2
+
+
+/*
+User: pkleauia_tesla
+
+Database: pkleauia_tesla
+
+pass: 9qG?O,gL^6U2
+
+User: pkleauia_apilaravelvue
+
+Database: pkleauia_apilaravelvue
+
+MySQL user named “pkleauia_apilaravelvue”.
+*/

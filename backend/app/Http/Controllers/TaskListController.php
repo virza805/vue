@@ -9,6 +9,7 @@ use App\Http\Requests\StoreTaskListRequest;
 use App\Http\Requests\UpdateTaskListRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class TaskListController extends Controller
 {
@@ -43,9 +44,9 @@ class TaskListController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => ['required'],
-            'dec' => ['required'],
-            'date' => ['required'],
-            'c_date' => ['required'],
+            // 'dec' => ['required'],
+            // 'date' => ['required'],
+            // 'c_date' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -81,28 +82,37 @@ class TaskListController extends Controller
         if (request()->has('key') && strlen(request()->has('key')) > 0) {
             $key = request()->key;
 
-            if (TaskList::where('status', 1)->where('id', $key)->exists()) {
-                $task_list = TaskList::where('status', 1)
+            if (TaskList::where('user_id', $user_id)->where('dec', $key)->exists()) {
+                $task_list = TaskList::where('user_id', $user_id)
                     ->orderBy('id', 'DESC')
-                    ->where('id', $key)->paginate(10);
-            } else if (TaskList::where('status', 1)->where('title', $key)->exists()) {
-                $task_list = TaskList::where('status', 1)
+                    ->where('dec', $key)->paginate(5);
+            } else if (TaskList::where('user_id', $user_id)->where('dec', $key)->exists()) {
+                $task_list = TaskList::where('user_id', $user_id)
                     ->orderBy('id', 'DESC')
-                    ->where('name', $key)->paginate(10);
-            } else if (TaskList::where('status', 1)->where('title', 'LIKE', '%' . $key . '%')->exists()) {
-                $task_list = TaskList::where('status', 1)
-                    ->where('name', 'LIKE', '%' . $key . '%')
+                    ->where('dec', $key)->paginate(5);
+            } else if (TaskList::where('user_id', $user_id)->where('title', $key)->exists()) {
+                $task_list = TaskList::where('user_id', $user_id)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10);
+                    ->where('title', $key)->paginate(5);
+            } else if (TaskList::where('user_id', $user_id)->where('title', 'LIKE', '%' . $key . '%')->exists()) {
+                $task_list = TaskList::where('user_id', $user_id)
+                    ->where('title', 'LIKE', '%' . $key . '%')
+                    ->orderBy('id', 'DESC')
+                    ->paginate(5);
+            } else if (TaskList::where('user_id', $user_id)->where('dec', 'LIKE', '%' . $key . '%')->exists()) {
+                $task_list = TaskList::where('user_id', $user_id)
+                    ->where('dec', 'LIKE', '%' . $key . '%')
+                    ->orderBy('id', 'DESC')
+                    ->paginate(5);
             }
             else {
                 $task_list = TaskList::where('user_id', $user_id)
                     ->where('section', 'LIKE', '%' . $key . '%')
                     ->orderBy('id', 'DESC')
-                    ->paginate(10);
+                    ->paginate(5);
             }
         }else{
-            $task_list = TaskList::where('user_id', $user_id)->orderBy('id', 'DESC')->paginate(10);
+            $task_list = TaskList::where('user_id', $user_id)->orderBy('id', 'DESC')->paginate(5);
         }
 
         return response()->json($task_list, 200);
@@ -224,6 +234,15 @@ class TaskListController extends Controller
         $book = TaskList::find($id);
 
         return response()->json($book, 200);
+    }
+
+    public function success_task(Request $request)
+    {
+        TaskList::where('id',$request->id)->update([
+            'success_task' => 1,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+        return response()->json('Success',200);
     }
 
 

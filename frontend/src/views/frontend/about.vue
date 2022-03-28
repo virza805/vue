@@ -1,6 +1,7 @@
 <template>
 <div>
-    <section id="v_130">
+  
+  <section id="v_130">
   <div class="section-padding">
     <div class="timeline-area">
       <div class="container">

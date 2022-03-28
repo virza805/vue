@@ -147,10 +147,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <router-link :to="{ name: 'addTask' }">
                                     <i class="icon-check-box"></i>
                                     Task
-                                </a>
+                                </router-link>
                             </li>
                             <li>
                                 <a href="#">

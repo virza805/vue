@@ -8,11 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^8.2.0",
     "apisauce": "^2.1.5",
     "axios": "^0.26.0",
     "pinia": "^2.0.11",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12"
+    "vue-loading-overlay": "^5.0.3",
+    "vue-observe-visibility": "^1.0.0",
+    "vue-router": "^4.0.12",
+    "vue-spinner": "^1.0.4"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.4.0",

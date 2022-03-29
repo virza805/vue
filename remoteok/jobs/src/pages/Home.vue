@@ -1,14 +1,16 @@
 <template>
-  <h1>Home page</h1>
+  <div>
+    <suspense>
+      
+      
+    <JobList />
+    </suspense>
+
+  </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
 <script setup>
-  // import useAuthStore from '@/store/auth';
+import JobList from '@/components/JobList.vue';
 
 </script>
 

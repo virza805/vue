@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomePage from "./pages/Home.vue"
+import TagArchive from "./pages/TagArchive.vue"
 import ContactPage from "./pages/Contact.vue"
 import Login from "@/pages/Login.vue"
 import Register from "@/pages/Register.vue"
@@ -13,6 +14,41 @@ const routes = [
         path: "/", 
         component: HomePage,
         meta: {auth: true}
+    },
+    { 
+        path: "/jobs", 
+        component: () => import("@/components/JobFormLayout.vue"),
+        meta: {auth: true},
+        children: [
+            {
+                name: "jobs.create",
+                path: "/create",
+                component: () => import("@/pages/jobs/crate.vue"),
+            },
+            {
+                name: "jobs.update",
+                path: "/update/:id",
+                component: () => import("@/pages/jobs/update.vue"),
+            },
+        ]
+    },
+    { 
+        name: "jobs.mine", 
+        path: "/my-jobs", 
+        component: () => import("@/pages/MyJobs.vue"),
+        // meta: {auth: true}
+    },
+    { 
+        name: "jobs.detail", 
+        path: "/:slug", 
+        component: () => import("@/pages/JobDetails.vue"),
+        // meta: {auth: true}
+    },
+    { 
+        name: "tag.jobs", 
+        path: "/tags/:slug", 
+        component: TagArchive,
+        // meta: {auth: true}
     },
     { 
         name: "auth.register",

@@ -8,11 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "@tiptap/vue-3": "^2.0.0-beta.90",
     "@vueuse/core": "^8.2.0",
     "apisauce": "^2.1.5",
     "axios": "^0.26.0",
+    "filepond": "^4.30.3",
     "pinia": "^2.0.11",
     "vue": "^3.2.25",
+    "vue-filepond": "^7.0.2",
     "vue-loading-overlay": "^5.0.3",
     "vue-observe-visibility": "^1.0.0",
     "vue-router": "^4.0.12",

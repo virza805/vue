@@ -4,8 +4,8 @@
           <template #fallback>
               <Loading :active="true" />
           </template>
-          
-              <MyJobList />
+
+            <MyJobList />
       </suspense>
   </div>
 </template>

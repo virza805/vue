@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Jobs layout</h2>
+      <router-view/>
   </div>
 </template>
 

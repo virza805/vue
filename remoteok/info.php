@@ -51,12 +51,12 @@ https://scribe.knuckles.wtf/laravel => for auto generate api Documentation
 #  => 
 # npm install -D @tailwindcss/typography => https://tailwindcss.com/docs/typography-plugin
 #  => 
+# npm install @tiptap/vue-3 @tiptap/starter-kit => for editor | https://tiptap.dev/
+# npm install vue-filepond filepond => for file upload | https://github.com/pqina/vue-filepond | https://pqina.nl/filepond/
 #  => 
 #  => 
 #  => 
-#  => 
-#  => 
-# 20:30 => https://www.youtube.com/watch?v=3nbfkHNeSzw&t=17s
+# 01:27:45 => https://www.youtube.com/watch?v=3nbfkHNeSzw&t=17s
 
 
 */

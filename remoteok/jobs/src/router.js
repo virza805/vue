@@ -22,12 +22,12 @@ const routes = [
         children: [
             {
                 name: "jobs.create",
-                path: "/create",
-                component: () => import("@/pages/jobs/crate.vue"),
+                path: "create",
+                component: () => import("@/pages/jobs/create.vue"),
             },
             {
                 name: "jobs.update",
-                path: "/update/:id",
+                path: "update/:id",
                 component: () => import("@/pages/jobs/update.vue"),
             },
         ]

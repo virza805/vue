@@ -5,13 +5,13 @@
           {{ form }}
       </pre>
       <form action="" class="flex flex-col gap-4 my-8">
-          <Input name="title" label="Job Title" v-model="form.model" />
+          <Input name="title" label="Job Title" v-model="form.title" />
           <Input name="title" label="Office/working location" v-model="form.location" />
           <Input name="title" label="Application Url" v-model="form.link" />
           <Input name="title" label="Your company name" v-model="form.company_name" />
           <FileUploader v-model="form.company_logo" />
           <Input name="title" label="Job Description" v-model="form.description" />
-          <Input name="title" label="Job Company Logo" v-model="form.company_logo" />
+          <!-- <Input name="title" label="Job Company Logo" v-model="form.company_logo" /> -->
 <!-- <pre>
     {{ form.type }}
 </pre> -->

@@ -6,7 +6,9 @@
             <p>Company Logo</p>
         </div>
 
-        <button @click="handleDeleteImage(modelValue)"  class="pr-4 text-2xl text-red-500">&times;</button>
+        <button 
+        @click="handleDeleteImage(modelValue)"  
+        class="pr-4 text-2xl text-red-500">&times;</button>
     </div>
     <FilePond v-else :server="serverConfig" name="file" />
   </div>
@@ -40,11 +42,11 @@ const serverConfig = {
         // url: "https://jobs-api.return0.codes/api/uploads",
         method: "POST",
         headers: {
-            Authorization: "Bearer" + localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
         },
         withCredentials: false,
         onload: (response) => {
-            console.log(JSON.parse(response).url);
+            // console.log(JSON.parse(response).url);
             emit("update:modelValue", JSON.parse(response).url);
         },
     },

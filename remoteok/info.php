@@ -58,6 +58,6 @@ https://scribe.knuckles.wtf/laravel => for auto generate api Documentation
 #  => 
 # FilePond Check => https://www.youtube.com/watch?v=3nbfkHNeSzw&t=17s
 
-
+https://github.com/kingRayhan/jobs-client-recreate/blob/main/src/components/Form/FileUploader.vue
 */
 

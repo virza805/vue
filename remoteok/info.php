@@ -1,5 +1,8 @@
 <?php 
 /* 
+npm run dev |=> for run this project
+
+
 ওয়ান ড্রাইভ লিংক
 https://go.techdiary.dev/vue-bootcamp-class-recordings
 

@@ -1,0 +1,5 @@
+@import './base.css';
+h2{
+  color: blueviolet;
+  font-weight: 700;
+}

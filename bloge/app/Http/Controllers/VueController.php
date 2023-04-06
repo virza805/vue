@@ -24,10 +24,10 @@ class VueController extends Controller
         // ');
         $newsData = DB::select('
             SELECT a.*,
-                GROUP_CONCAT(b.name) as category_name,
-                GROUP_CONCAT(b.id) as cat_id,
-                GROUP_CONCAT(c.name) as tag_name,
-                GROUP_CONCAT(c.id) as tag_id
+                GROUP_CONCAT(DISTINCT b.name) as category_name,
+                GROUP_CONCAT(DISTINCT b.id) as cat_id,
+                GROUP_CONCAT(DISTINCT c.name) as tag_name,
+                GROUP_CONCAT(DISTINCT c.id) as tag_id
             FROM posts a
             JOIN cats b ON find_in_set(b.id, a.cat)
             JOIN tags c ON find_in_set(c.id, a.tag)

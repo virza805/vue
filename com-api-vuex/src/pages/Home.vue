@@ -9,7 +9,7 @@
 
 <script>
 import Blog from '../components/home/Blog.vue';
-import {mapState, mapGetters, mapActions } from "vuex"
+import {mapState, mapGetters } from "vuex"
 
 export default {
 
@@ -20,15 +20,13 @@ export default {
   ...mapGetters("blogs", ['allBlog']),
   },
   mounted(){
-    this.$store.dispatch('blogs/fetchPosts');
+    // console.log(this.blogs.length);
+    // If it's empty, then the fetchPosts action is dispatched to fetch the blog posts from the server. If blogs data is already available, then the fetchPosts action will not be dispatched.
+    if (!this.blogs.length) { // Check if the blogs data is not available
+      this.$store.dispatch('blogs/fetchPosts');
+    }
     
   },
-  // methods: {
-  //   ...mapActions("blogs", ['fetchPosts']),
-  // },
-  // created() {
-  //   this.$store.dispatch('blogs/fetchPosts');
-  // }
 };
 
 

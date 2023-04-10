@@ -42,7 +42,7 @@
 <script>
 import { mapMutations } from 'vuex';
 import { trimWords } from '../../assets/js/trimWords'
-
+import { useStore } from 'vuex';
 
 export default {
     props:["product"],
@@ -51,9 +51,13 @@ export default {
     },
     methods:{
         ...mapMutations('products', ['deleteProduct']),
+        
         remove(){
+            const store = useStore() 
             this.deleteProduct(this.product.id)
-            // this.$store.dispatch('products/removeProduct');
+            // store.dispatch('products/removeProduct',this.product.id);
+            // this.$store.dispatch('products/removeProduct',this.product.id);
+            
         },
     },
 

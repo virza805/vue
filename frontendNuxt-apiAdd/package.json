@@ -1,0 +1,32 @@
+{
+    "name": "bengal-shop-frontend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "generate": "nuxt generate"
+    },
+    "dependencies": {
+        "@nuxtjs/auth-next": "5.0.0-1648802546.c9880dc",
+        "@nuxtjs/axios": "^5.13.6",
+        "core-js": "^3.19.3",
+        "nuxt": "^2.15.8",
+        "v-click-outside": "^3.1.2",
+        "vue": "^2.6.14",
+        "vue-feather-icons": "^5.1.0",
+        "vue-pagination-2": "^3.0.91",
+        "vue-server-renderer": "^2.6.14",
+        "vue-slick-carousel": "^1.0.6",
+        "vue-template-compiler": "^2.6.14",
+        "vue-toastification": "^1.7.14",
+        "webpack": "^4.46.0"
+    },
+    "devDependencies": {
+        "@nuxtjs/tailwindcss": "^4.2.1",
+        "postcss": "^8.4.4",
+        "sass": "^1.52.1",
+        "sass-loader": "10"
+    }
+}

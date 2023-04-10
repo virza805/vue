@@ -29,7 +29,7 @@ const products = {
         },
         async removeProduct({commit},id) {
             const response = await axios.delete(`http://localhost:8000/api/all/news-delete/${id}`);
-            commit('deleteProduct', response.id);
+            commit('deleteProduct',id);
             // console.log(response); 
         }
     }

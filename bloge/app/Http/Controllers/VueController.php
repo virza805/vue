@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Post;
 
 class VueController extends Controller
 {
@@ -96,17 +97,14 @@ class VueController extends Controller
      */
     public function destroy(string $id)
     {
-        // $post = Post::findOrFail($id);
-       // $postSql = "delete from posts where id = '.$id.' ";
+        $post = Post::findOrFail($id);
 
-        $img  = DB::select('SELECT * FROM `posts` WHERE id= ?', [$id]);
+        if($post->featured_image){
+            Storage::disk('public')->delete($post->featured_image);
+        }
 
-        // if($img->featured_image){
-        //     Storage::disk('public')->delete($img->featured_image);
-        // }
-
-        $delete  = DB::select('delete from posts where id = ?', [$id]);
-    //    $delete = $img->delete($id);
+        // $delete  = DB::select('delete from posts where id = ?', [$id]); // row que
+       $delete = $post->delete($id);
 
         // return abort(500);
         return response()->json('Deleted Done', 200);

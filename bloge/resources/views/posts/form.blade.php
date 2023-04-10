@@ -13,13 +13,15 @@
 
 
                     {{-- don't forget to add multipart/form-data so we can accept file in our form --}}
-                    <form method="post" action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">class="mt-6 space-y-6">
+                    <form method="post" action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                         @csrf
                         {{-- add @method('put') for edit mode --}}
                         @isset($post)
                             @method('put')
                         @endisset
-
+            <div class="flex-wrap">
+                <div class="flex-col">
+                    <div class="flex-row">
                         <div>
                             <x-input-label for="title" value="Title" />
                             <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" :value="$post->title ?? old('title')" required autofocus />
@@ -35,7 +37,10 @@
                             <x-text-input id="inventory" name="inventory" type="text" class="mt-1 block w-full" :value="$post->inventory ?? old('inventory')" required autofocus />
                             <x-input-error class="mt-2" :messages="$errors->get('inventory')" />
                         </div>
-                        <div>
+                    </div>
+
+
+                        <div class="item-flex">
                             <x-input-label value="Category" />
                             {{-- <x-text-input id="cat" name="cat" type="text" class="mt-1 block w-full" :value="$post->cat ?? old('cat')" required autofocus /> --}}
                             <x-input-error class="mt-2" :messages="$errors->get('cat')" />
@@ -44,7 +49,7 @@
                                 <h3><input type="checkbox" name="category[]" value="{{ $ca->id }}">{{ $ca->name }}</h3>
                             @endforeach
                         </div>
-                        <div>
+                        <div class="item-flex">
                             <x-input-label for="tag" value="Tag" />
                             {{-- <x-text-input id="tag" name="tag" type="text" class="mt-1 block w-full" :value="$post->tag ?? old('tag')" required autofocus /> --}}
                             @foreach ($tags as $tag)
@@ -59,7 +64,12 @@
                             <x-textarea-input id="content" name="content" class="mt-1 block w-full" required autofocus>{{ $post->content ?? old('content') }}</x-textarea-input>
                             <x-input-error class="mt-2" :messages="$errors->get('content')" />
                         </div>
+                </div>
 
+
+
+
+                <div class="flex-col">
                         <div>
                             <x-input-label for="featured_image" value="Featured Image" />
                             <label class="block mt-2">
@@ -77,6 +87,8 @@
                             </div>
                             <x-input-error class="mt-2" :messages="$errors->get('featured_image')" />
                         </div>
+                </div>
+            </div>
 
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>

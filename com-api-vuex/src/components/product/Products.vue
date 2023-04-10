@@ -31,7 +31,7 @@
 
             </div>
             <div class="product_action">
-                <button class="button">
+                <button @click="addProductToCart(product)" class="button">
                     addToCart
                 </button>
             </div>
@@ -40,9 +40,9 @@
         
 </template>
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapActions } from 'vuex';
 import { trimWords } from '../../assets/js/trimWords'
-import { useStore } from 'vuex';
+
 
 export default {
     props:["product"],
@@ -50,15 +50,25 @@ export default {
         trimWords
     },
     methods:{
-        ...mapMutations('products', ['deleteProduct']),
-        
+        ...mapMutations('products', ['deleteProduct','pushProductToCart']),
+        ...mapActions('products', ['removeProduct', 'addProductToCart']),
         remove(){
-            const store = useStore() 
-            this.deleteProduct(this.product.id)
-            // store.dispatch('products/removeProduct',this.product.id);
-            // this.$store.dispatch('products/removeProduct',this.product.id);
-            
+            // this.deleteProduct(this.product.id) // delete from state | mapMutations requerd
+
+            this.removeProduct(this.product.id); // delete from api with state | mapActions requerd
+            // this.$store.dispatch('products/removeProduct', this.product.id) ;// delete from api with state | mapActions no need
+
+
         },
+        addToCart(item){
+            // this.addProductToCart(item);
+            this.pushProductToCart(item);
+        },
+        addProductToCart(ss) {
+            
+            // this.addProductToCart(ss);
+            this.$store.dispatch('products/addProductToCart', ss)
+        }
     },
 
 }

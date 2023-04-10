@@ -1,6 +1,7 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/student">Student</RouterLink>
         <RouterLink to="/note">Notes</RouterLink>
         <RouterLink to="/product">Product</RouterLink>
+        <RouterLink to="/cart">Cart ({{cartQty}})</RouterLink>
       </nav>
     </div>
   </header>
@@ -19,6 +21,16 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
+<script>
+
+import { mapGetters } from 'vuex'
+export default {
+  
+  computed:{
+      ...mapGetters('products', ['cartQty'])
+  },
+}
+</script>
 
 <style>
 nav a {

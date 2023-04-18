@@ -21,9 +21,9 @@
       @submit.prevent="handleSubmit"
       method="POST"
       enctype="multipart/form-data"
+      id="product_form"
       >
 
-        <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm -space-y-px">
           <form-input
 
@@ -32,27 +32,25 @@
             :helperText="errorMsg('name')"
             :hasError="hasError('name')"
             placeholder="name"
+            name="name"
           />
-          <!-- <form-input
-            label="category_id"
+
+          <label>Choose a Category</label>
+          <h3 v-for="cat in cat_list " :key="cat.id">
+            <input
+            type="checkbox"
+            name="category_id[]"
             v-model="form.category_id"
-            :helperText="errorMsg('category_id')"
-            :hasError="hasError('category_id')"
-            placeholder="category_id"
-          /> -->
-          <label for="cars">Choose a Category</label>
-          <select
+            :value="cat.id"
+            />{{ cat.name }}</h3>
+          <!-- <select
           v-model="form.category_id"
-          name="cars" id="cars" form="carform"
+          name="category_id" id="cars"
           class="input"
           >
             <option v-for="cat in cat_list " :key="cat.id" :value="cat.id">{{ cat.name }} ({{ cat.id }})</option>
-            <!-- <option value="2">Cat-2</option>
-            <option value="3">Cat-3</option>
-            <option value="4">Cat-4</option>
-            <option value="5">Cat-5</option>
-            <option value="6">Cat-6</option> -->
-          </select>
+
+          </select> -->
 
           <form-input
             type="file"
@@ -61,6 +59,7 @@
             :helperText="errorMsg('image')"
             :hasError="hasError('image')"
             placeholder="image"
+            name="image"
           />
           <form-input
 
@@ -69,6 +68,7 @@
             :helperText="errorMsg('price')"
             :hasError="hasError('price')"
             placeholder="Enter price text"
+            name="price"
           />
           <form-input
 
@@ -77,6 +77,7 @@
             :helperText="errorMsg('sell_price')"
             :hasError="hasError('sell_price')"
             placeholder="Enter sell_price text"
+            name="sell_price"
           />
           <form-input
             label="Product Tag"
@@ -84,6 +85,7 @@
             :helperText="errorMsg('tag')"
             :hasError="hasError('tag')"
             placeholder="Enter Product Tag"
+            name="tag"
           />
           <form-textarea
 
@@ -94,6 +96,7 @@
             placeholder="Enter text here..."
             rows="4"
             cols="20"
+            name="description"
           ></form-textarea>
         </div>
 
@@ -124,7 +127,7 @@ export default {
       return{
         form:{
           name: "",
-          category_id: "",
+          category_id: [],
           description: "",
           tag: "",
           price: "",
@@ -145,10 +148,16 @@ export default {
     methods: {
       // From submit async await
      async handleSubmit() {
+      let form_data = new FormData(document.getElementById("product_form"));
+      // let cats = JSON.stringify(this.form.category_id);
+      let cats = this.form.category_id.join(",");
+      console.log(cats);
+
+      form_data.append("category_id", cats);
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/product/store', this.form)
+          const res = await this.$axios.$post('/api/user/product/store', form_data)
 
           console.log(res);
           this.loading = false;

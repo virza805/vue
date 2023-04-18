@@ -4,14 +4,23 @@
         <td>{{ cart.title }}</td>
         <td>{{ cart.price }}</td>
         <td>{{ cart.quantity }}</td>
-        <td>{{ cart.iTotalPrice }}</td>
+        <td>$ {{ cart.quantity * cart.price }} </td>
     </tr>
 </template>
 <script>
-// import { mapMutations, mapActions } from 'vuex';
+// import { mapGetters } from 'vuex';
 
 export default {
     props:["cart"],
+
+    computed:{
+        // products(){
+        //   const store = useStore();
+        //   return store.state.products.products
+        // },
+        // ...mapState('products', ['cart']),
+        // ...mapGetters('products', ['itemTotal'])
+    },
     // methods:{
     //     ...mapMutations('products', ['pushProductToCart']),
     //     ...mapActions('products', ['addProductToCart']),

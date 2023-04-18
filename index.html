@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="form_row">
+        <div class="col_6">
+            <div class="form_group">
+                <label>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Name: </font>
+                    </font><span class="require">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">*</font>
+                        </font>
+                    </span>
+                </label>
+                <input value="" autocomplete="off" type="text" name="gift_card_recipient_name"
+                    onkeyup="document.getElementById('gift_card_recipient_name_text').innerHTML=this.value" required=""
+                    style="border: 0px;">
+                <span class="gift_card_recipient_name_span giftcardformError"></span>
+            </div>
+        </div>
+        <div class="col_6">
+            <div class="form_group">
+                <label>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Email address: </font>
+                    </font><span class="require email_required hidden"></span>
+                </label>
+                <input value="" autocomplete="off" type="text" name="gift_card_recipient_email" required="">
+                <span class="gift_card_recipient_email_span giftcardformError"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form_row" id="">
+        <div class="col_6">
+            <div class="form_group">
+                <label>Símanúmer: <span class="require requirePhone">*</span></label>
+                <input value="" autocomplete="off" type="text" name="gift_card_phone" maxlength="7" minlength="7"
+                    required="">
+                <span class="gift_card_phone_span giftcardformError"></span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form_group radio-buttob-form">
+        <label class="send_mail_sms"><input type="radio" name="send_mail_to_recipient" value="1"> Sendu tölvupóst til
+            viðtakanda </label>
+        <label class="send_mail_sms"><input type="radio" name="send_mail_to_recipient" value="2"> Sendu sms til
+            viðtakanda </label>
+        <label class="send_mail_sms"><input type="radio" name="send_mail_to_recipient" value="3" checked=""> Sendu sms
+            &amp; tölvupóst til viðtakanda</label>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        function onChangeRadio() {
+            // Get the selected radio button value
+            const selectedValue = document.querySelector('input[name="send_mail_to_recipient"]:checked').value;
+
+            // Perform some action based on the selected value
+            switch (selectedValue) {
+                case '1':
+                    // Send email to recipient
+                    console.log('Sending email...');
+                    break;
+                case '2':
+                    // Send SMS to recipient
+                    console.log('Sending SMS...');
+                    break;
+                case '3':
+                    // Send both email and SMS to recipient
+                    console.log('Sending email and SMS...');
+                    break;
+                default:
+                    console.log('Invalid value selected');
+                    break;
+            }
+        }
+
+
+
+// Attach the onchange event listener to the radio buttons
+const radioButtons = document.querySelectorAll('input[name="send_mail_to_recipient"]');
+radioButtons.forEach(button => button.addEventListener('change', onChangeRadio));
+
+    </script>
+</body>
+
+</html>

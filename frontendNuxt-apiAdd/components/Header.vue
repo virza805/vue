@@ -25,6 +25,14 @@
               class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
                 src="~/assets/img/heart.png" alt=""></span></nuxt-link>
 
+          <nuxt-link class="relative mx-4" to="/carts"><span
+              class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
+                src="~/assets/img/u_shopping-bag.png" alt=""></span> <span
+              class="absolute bg-green-600 px-1 h-4 top-0 right-0 rounded-full text-xs flex justify-center items-center text-white">
+              {{ cartQty }}
+
+            </span>
+          </nuxt-link>
           <nuxt-link class="relative mx-4" to="/cart"><span
               class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
                 src="~/assets/img/u_shopping-bag.png" alt=""></span> <span
@@ -152,6 +160,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import {
     MenuIcon,
     SearchIcon
@@ -174,6 +183,10 @@
     created: function(){
       this.getData();
       // this.getProductData();
+    },
+
+    computed:{
+        ...mapGetters('products', ['cartQty'])
     },
 
     methods: {

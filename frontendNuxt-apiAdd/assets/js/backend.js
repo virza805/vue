@@ -1,3 +1,14 @@
+
+// Start Sidebar On Off javaScript onclick="popupOnOff()"
+function popupOnOff() {
+    var sampleElem = document.getElementById("pMm");
+    if (sampleElem.className === "model-open") {
+        sampleElem.className = " ";
+    } else {
+        sampleElem.className = "model-open";
+    }
+}
+
 // Start Sidebar On Off javaScript
 function backendSidebarOnOffFunction() {
     var sampleElem = document.getElementById("backendWrapper");
@@ -7,6 +18,7 @@ function backendSidebarOnOffFunction() {
         sampleElem.className = "left_sidebar_show";
     }
 }
+
 
 // Start now fullScreen javaScript
 var elem = document.documentElement;

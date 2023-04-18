@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown"  v-bind="$attrs">
-    <div class="drop_btn drop_con">{{ title }}</div>
+    <div class="drop_btn drop_con dropdown-btn">{{ title }}</div>
     <div class="dropdown-con">
       <slot />
     </div>

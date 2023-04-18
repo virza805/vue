@@ -18,7 +18,7 @@
         </button>
 
         <div v-if="!matched" class="relative z-10">
-          <button @click.prevent="addToCart(product, 'plus')" class=" text-white text-2xl">Add to Card</button>
+          <button @click.prevent="addProductToCart(product)" class=" text-white text-2xl">Add to Card</button>
         </div>
 
 
@@ -56,6 +56,10 @@
       productDetails() {
         // this.$store.dispatch("product-details-modal/triggerModal", this.product);
         this.$store.dispatch("products/triggerModal", this.product);
+      },
+
+      addProductToCart(ss) {
+        this.$store.dispatch('products/addProductToCart', ss)
       },
       addToCart(product, type) {
         this.$store.dispatch("cart/addToCart", {

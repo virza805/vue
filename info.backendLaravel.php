@@ -145,4 +145,73 @@ https://laravel.com/docs/8.x/eloquent-resources
 
 
 
+
+
+
+
+
+
+ i wont cart state save localstorage when user reload or back cart state fell from localStorage if localStorage data exist else blank in nuxt.js
+
+
+ To save the cart state to localStorage and retrieve it when the user reloads the page or returns to the cart page, you can use the localStorage API in combination with a Vuex store plugin.
+
+First, create a Vuex store plugin that listens to mutations on the cart state and saves the updated cart state to localStorage:
+
+javascript
+Copy code
+const cartPlugin = store => {
+  // Watch for cart state changes
+  store.watch(
+    (state) => state.cart,
+    (newCart) => {
+      // Save cart state to localStorage
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    },
+    // Deep watch to ensure nested objects are watched
+    { deep: true }
+  );
+
+  // On store initialization, check if cart state exists in localStorage and set it
+  if (localStorage.cart) {
+    store.commit('setCart', JSON.parse(localStorage.cart));
+  }
+};
+In this plugin, we use the store.watch() method to listen for changes to the cart state. Whenever the cart state changes, we save the updated cart state to localStorage using the localStorage.setItem() method. We also use a deep watch option to ensure that nested objects are watched for changes.
+
+In addition, we check if the cart state exists in localStorage when the store is initialized, and if it does, we set the cart state using the store.commit() method.
+
+Next, add this plugin to your Vuex store:
+
+php
+Copy code
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
+  state: {
+    products: [],
+    cart: [],
+    checkoutStatus: '',
+    modalData: {
+      product: [],
+      modal: false
+    },
+  },
+  mutations: {
+    setCart(state, cart) {
+      state.cart = cart;
+    },
+    // Other mutations...
+  },
+  plugins: [cartPlugin],
+});
+
+export default store;
+In this example, we have added the cartPlugin to the plugins array in our Vuex store configuration.
+
+With this setup, whenever the user adds or removes items from their cart, the cart state will be saved to localStorage. When the user returns to the cart page or reloads the page, the cart state will be retrieved from localStorage if it exists. If there is no cart state in localStorage, the cart state will be initialized as an empty array.
+
  */

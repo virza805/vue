@@ -42,6 +42,7 @@ export default {
     // store.dispatch('products/fetchProduct');
     // // this.loding = false;
     if (!this.products.length) { // Check if the blogs data is not available
+     
       this.$store.dispatch('products/fetchProduct');
     }
     

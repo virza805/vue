@@ -29,7 +29,7 @@
 
 </script>
 
-<style scoped>
+<style>
 .drop_btn.drop_con + .dropdown-con {
     display: none;
 }

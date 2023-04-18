@@ -1,3 +1,4 @@
+
 // Start Sidebar On Off javaScript
 function backendSidebarOnOffFunction() {
   var sampleElem = document.getElementById("backendWrapper");
@@ -7,3 +8,4 @@ function backendSidebarOnOffFunction() {
       sampleElem.className = "left_sidebar_show";
   }
 }
+

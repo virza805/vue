@@ -42,7 +42,8 @@
           <div v-for="cat in cat_slider_list" :key="cat.id" class="bg-gray-200 p-4">
             <nuxt-link :to="`/category/?id=${cat.id}`">
               <div class="h-32 flex justify-center items-center">
-                <img src="~/assets/img/carousel-img-2.png" alt="">
+                <img v-if="cat.image" :src="'http://127.0.0.1:8000/storage/uploads/' + cat.image" :alt="cat.image" width="120">
+                <img v-else src="~/assets/img/carousel-img-2.png" alt="">
               </div>
               <h4 class="text-xl">{{ cat.name }}</h4>
             </nuxt-link>
@@ -77,7 +78,9 @@
                 <nuxt-link :to="slid.btn_link" class="bs-white-btn">{{ slid.btn }}</nuxt-link>
               </div>
               <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
-                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
+
+                <img v-if="slid.image" :src="'http://127.0.0.1:8000/storage/uploads/' + slid.image" :alt="slid.image" width="70">
+                <img v-else class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
               </div>
             </div>
           </div>
@@ -111,7 +114,8 @@
             <div class="single-bs-product">
               <div class="h-80  relative mb-6">
                 <div class="h-full bg-gray-50 flex justify-center items-center p-4">
-                  <img class="mx-auto w-auto" src="~/assets/img/carousel-img-1.png" alt="Workflow" />
+                  <img v-if="product.image" :src="'http://127.0.0.1:8000/storage/uploads/' + product.image" :alt="product.image" width="170">
+                  <img v-else class="mx-auto w-auto" src="~/assets/img/carousel-img-1.png" alt="Workflow" />
                 </div>
 
                 <div class="product-img-hover absolute h-full w-full top-0 left-0 flex justify-center items-center">
@@ -135,14 +139,17 @@
 
             </div>
           </div>
+
         </div>
 
         <div class="text-center mb-10">
           <pagination v-model="page" :records="total" :per-page="per_page" @paginate="getProductData"></pagination>
+          <!-- <pagination v-model="page" :records="products.total" :per-page="products.per_page" @paginate="productsGet"></pagination> -->
         </div>
-        <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center"
-          v-bind="productCarouselSettings">
-          <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product" />
+
+        <vue-slick-carousel v-if="products.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
+        <!-- <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings"> -->
+          <SingleProductBox v-for="product in products" :key="product.id" :product="product" />
         </vue-slick-carousel>
 
 
@@ -207,12 +214,23 @@
 
               </div>
               <div class="w-full md:w-1/3 flex justify-end">
-                <img src="~/assets/img/fresh-fruit.png" alt="">
+                <img v-if="cat.image" :src="'http://127.0.0.1:8000/storage/uploads/' + cat.image" :alt="cat.image" width="120">
+                <img v-else src="~/assets/img/fresh-fruit.png" alt="">
               </div>
             </div>
           </div>
 
         </div>
+
+
+        <div class="flex flex-wrap ">
+          <div v-if="load" class="text-xl my-3 text-red-400 font-medium text-center "> Loading ... .. .</div>
+
+          <ProductBox v-for="product in products" :key="product.id" :product="product" />
+
+        </div>
+
+
 
       </div>
     </div>
@@ -223,6 +241,9 @@
   import Footer from '../components/Footer.vue'
   import Header from '../components/Header.vue'
   import SingleProductBox from '../components/SingleProductBox.vue'
+  import ProductBox from '../components/ProductBox.vue'
+
+  import { mapState, mapActions } from 'vuex';
 
   import dealsOfTheDayProducts from '../assets/css/deals-of-the-day-products.json'
 
@@ -234,7 +255,8 @@
     components: {
       Header,
       Footer,
-      SingleProductBox
+      SingleProductBox,
+      ProductBox
     },
     data() {
       return {
@@ -377,13 +399,34 @@
         // this.per_page = r.per_page;
         this.load = false;
       },
+
+      ...mapActions('products', ['fetchProduct']),
+      productsGet(page = 1){
+          // this.deleteProduct(this.product.id) // delete from state | mapMutations requerd
+
+          // this.fetchProduct(1); // mapActions requerd
+          this.$store.dispatch('products/fetchProduct', page) ;// mapActions no need
+
+
+      },
     },
 
 
+    computed:{
+      ...mapState('products', ['products'])
+    },
     mounted() {
       this.dealsOfTheDayProducts = dealsOfTheDayProducts;
-      console.log(this.dealsOfTheDayProducts)
-    }
+      // console.log(this.dealsOfTheDayProducts)
+      if (!this.products.length) { // Check if the blogs data is not available
+        this.$store.dispatch('products/fetchProduct', this.page);
+      }
+
+      this.unsubscribe = this.$store.subscribe((_, state) => {
+        localStorage.setItem("products:cart", JSON.stringify(state.products.cart));
+      });
+
+    },
 
   }
 

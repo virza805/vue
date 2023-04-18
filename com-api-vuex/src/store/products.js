@@ -12,8 +12,12 @@ const products = {
         checkoutStatus: null
     },
     getters:{
+        // itemTotal (state) {
+        //     return state.cart.iTotalPrice = state.cart.quantity * state.cart.price
+        // },
         cartTotal (state) {
-            return state.cart.reduce((total, cart) => total + cart.iTotalPrice , 0)
+            // return state.cart.reduce((total, cart) => total + cart.iTotalPrice , 0)
+            return state.cart.reduce((total, cart) => total + cart.quantity * cart.price, 0)
         },
         cartQty (state) {
             return state.cart.reduce((total, cart) => total + cart.quantity, 0)

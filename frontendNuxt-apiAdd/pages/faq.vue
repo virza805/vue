@@ -61,7 +61,8 @@
 
       </div>
     </div>
-
+    <Popup />
+    <Test />
 
     <ContactInfo />
   </div>
@@ -69,13 +70,18 @@
 
 <script>
   import Dropdown from '../components/Dropdown.vue';
+  import Popup from '../components/Popup.vue';
+  import Test from '../components/Test.vue';
+
   export default {
     head: {
       title: "FAQ's",
     },
     components: {
-      Dropdown
-    }
+    Dropdown,
+    Test,
+    Popup
+}
   }
 
 </script>

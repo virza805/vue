@@ -340,6 +340,7 @@
       this.getCatSliderData();
       this.getProductData();
       this.getSliderData();
+
     },
 
     methods: {
@@ -427,6 +428,12 @@
       });
 
     },
+    // Call the setCartFromLocalStorage action when the module is initialized
+    // to retrieve the cart from localStorage
+
+    // created() {
+    //   this.$store.dispatch('products/setCartFromLocalStorage');
+    // }
 
   }
 

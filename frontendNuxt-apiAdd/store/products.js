@@ -4,7 +4,7 @@ const products = {
   namespaced: true,
   state:{
     products:[],
-    cart: process.client ? JSON.parse(localStorage.getItem("products:cart")) : [], // JSON.parse(localStorage.getItem("products:cart")) ||
+    cart: [], // process.client ? JSON.parse(localStorage.getItem("products:cart")) : []
     checkoutStatus:"",
     modalData: {
       product: [],
@@ -26,6 +26,11 @@ const products = {
     setProudcts(state, payload) {
         state.products = payload.data.data
     },
+
+    setCart(state, cart) { // Define a mutation to set the cart from localStorage
+      state.cart = cart;
+    },
+
     TRIGGER_MODAL(state, product) {
       state.modalData.product = product;
       state.modalData.modal = true;
@@ -144,6 +149,7 @@ const products = {
 
     },
 
+
     // checkout form the cart
     checkout({state, commit}){
         shop.buyProducts(
@@ -161,6 +167,9 @@ const products = {
     },
 
 
-  }
+  },
+
+
+
 }
 export default products;
